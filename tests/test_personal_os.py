@@ -1,5 +1,7 @@
 import argparse
+import contextlib
 import importlib.util
+import io
 import tempfile
 import unittest
 from pathlib import Path
@@ -129,6 +131,34 @@ class PersonalOSTest(unittest.TestCase):
         self.assertEqual(code, 0)
         saved = config_path.read_text(encoding='utf-8')
         self.assertIn('remm@example.com', saved)
+
+    def test_doctor_passes_when_required_dependencies_are_ready(self):
+        cfg = dict(self.cfg)
+        cfg['personal_account'] = 'remm@example.com'
+        plugins = self.vault / '.obsidian' / 'plugins'
+        for plugin_id in ('tasknotes', 'dataview', 'google-calendar'):
+            manifest = plugins / plugin_id / 'manifest.json'
+            manifest.parent.mkdir(parents=True, exist_ok=True)
+            manifest.write_text('{}\n', encoding='utf-8')
+        granola_auth = self.root / 'granola-auth.json'
+        granola_auth.write_text('{}\n', encoding='utf-8')
+
+        def command_result(command):
+            if command == ['node', '-v']:
+                return True, 'v24.18.1'
+            if command == ['codex', 'login', 'status']:
+                return True, 'Logged in using ChatGPT'
+            return True, 'ready'
+
+        output = io.StringIO()
+        with mock.patch.object(PERSONAL_OS, 'GRANOLA_AUTH_PATH', granola_auth):
+            with mock.patch.object(PERSONAL_OS.shutil, 'which', return_value='/opt/homebrew/bin/tool'):
+                with mock.patch.object(PERSONAL_OS, 'command_detail', side_effect=command_result):
+                    with mock.patch.object(PERSONAL_OS.Path, 'exists', return_value=True):
+                        with contextlib.redirect_stdout(output):
+                            code = PERSONAL_OS.cmd_doctor(argparse.Namespace(), cfg)
+        self.assertEqual(code, 0)
+        self.assertIn('All required checks pass.', output.getvalue())
 
     def test_daily_note_is_today_only(self):
         with mock.patch.object(PERSONAL_OS, 'fetch_calendar_events', return_value=[{
