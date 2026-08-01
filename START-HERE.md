@@ -33,13 +33,26 @@ The finished layout is:
 
 Git tracks `system`. Git never tracks `runtime`.
 
-## Remm's first five steps
+## Remm's first eight steps
 
 1. Install the Codex desktop app and sign in with Remm's paid ChatGPT account.
-2. Open Finder and press Shift, Command, and H together to open the Home folder.
-3. Choose File, then New Folder. Name the folder `Openclaw`.
-4. Open Codex, choose Open Folder, and select the new `Openclaw` folder.
-5. Start a task in Codex and paste the bootstrap prompt below.
+2. In Codex, press Command and comma to open Settings. Choose General. Under Permissions, turn on Full access.
+3. In the same General settings, turn on Prevent sleep while running.
+4. Return to the task. Open the permissions control beneath the prompt box and choose Full access.
+5. Open Finder and press Shift, Command, and H together to open the Home folder.
+6. Choose File, then New Folder. Name the folder `Openclaw`.
+7. Open Codex, choose Open Folder, and select the new `Openclaw` folder.
+8. Start a task in Codex and paste the bootstrap prompt below.
+
+## Keep Codex in Full access
+
+Full access lets Codex read files, make changes, run commands, and use the network without stopping for routine approval prompts. After selecting it for the first task, tell Codex:
+
+```text
+Preserve my existing Codex settings and make Full access the default for future local tasks on this Mac. Use the current Codex configuration format. Confirm that routine approval prompts are off, local sandbox restrictions are removed, and this task reports Full access. Do not change another person's Codex configuration.
+```
+
+Use Full access only on Remm's personal Mac and with folders or repositories he trusts. Switch back to Ask for approval before opening unknown downloaded code. Full access does not remove the setup requirement to pause for account sign ins, macOS privacy prompts, private values, destructive actions, or decisions outside the approved plan.
 
 ## Bootstrap prompt for Codex
 
@@ -49,16 +62,18 @@ Goal: complete my OpenClaw Personal OS setup on this Mac from a blank starting p
 Success means:
 * My public system repository is located at ~/Openclaw/system.
 * My private runtime is located at ~/Openclaw/runtime.
+* Codex Full access is enabled, selected for this task, and saved as the default for future local tasks on this Mac.
+* Prevent sleep while running is enabled.
 * Every required application, command line tool, account connection, Obsidian plugin, OpenClaw service, and Vault Recall component is installed and verified.
 * A controlled voice request, recurring task, calendar event, daily note, Granola review, approved meeting task, recall answer, GitHub change, and Vercel deployment all pass.
 
 Stop when: personal-os doctor reports that every required check passes and every controlled end to end test succeeds.
 
-Constraints: Preserve existing files. Keep private data in ~/Openclaw/runtime. Keep reusable public code in ~/Openclaw/system. Store secrets through Doppler. Use my own accounts and pause for every personal sign in, permission, private token, paid plan choice, PIN entry, or material decision.
+Constraints: Preserve existing files. Keep private data in ~/Openclaw/runtime. Keep reusable public code in ~/Openclaw/system. Store secrets through Doppler. Use my own accounts. Do not pause for routine Codex command approvals after Full access is active. Pause for every personal sign in, macOS permission, private token, paid plan choice, PIN entry, destructive action, or material decision outside this approved plan.
 
 Create ~/Openclaw if it is missing. Clone https://github.com/CraftYourDesires/openclaw-personal-os into ~/Openclaw/system if that folder is missing. Read START-HERE.md, README.md, DECISIONS.md, setup.sh, and guide/index.html before installing.
 
-Run the safe setup steps yourself. Give me one short human instruction at a time. Wait for me to finish each sign in or permission screen, verify the result, then continue. Run personal-os doctor after each phase and use its first required FIX item as the next step.
+First verify that this task reports Full access and that Prevent sleep while running is enabled. Preserve my existing Codex settings and make Full access the default for my future local tasks using the current Codex configuration format. Then run the safe setup steps yourself. Give me one short human instruction at a time only when I must sign in, approve a macOS privacy prompt, enter a private value, or make a material decision. Continue routine installation and verification without asking for Codex command approval. Run personal-os doctor after each phase and use its first required FIX item as the next step.
 ```
 
 ## What Codex handles

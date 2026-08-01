@@ -262,8 +262,42 @@
         <label class="check"><input type="checkbox" data-check="folder-codex"><span><strong>Folder opened in Codex</strong>Codex creates public code at `~/Openclaw/system` and private data at `~/Openclaw/runtime`.</span></label>
         <label class="check"><input type="checkbox" data-check="folder-clone"><span><strong>Repository cloned into `system`</strong>The exact final path is `~/Openclaw/system`.</span></label>
       </div>
-      <div class="callout callout-blue"><strong>Remm does not type Git commands.</strong> Paste the master prompt on page 17. Codex creates the folders, clones the repository, reads the files, and runs the installer.</div>
+      <div class="callout callout-blue"><strong>Remm does not type Git commands.</strong> Paste the master prompt on page 18. Codex creates the folders, clones the repository, reads the files, and runs the installer.</div>
       <span class="page-number">04</span>
+    </section>
+
+    <section class="print-page" id="codex-full-access">
+      <p class="eyebrow">One time Codex setting</p>
+      <h2>Give Codex Full access for this trusted setup</h2>
+      <p class="dek">Full access lets Codex keep installing, configuring, testing, and using the network without stopping for routine command approval.</p>
+      <div class="grid-2">
+        <div class="card card-blue">
+          <h3>Turn it on</h3>
+          <ol class="source-list">
+            <li>Press Command and comma to open Settings.</li>
+            <li>Choose General.</li>
+            <li>Under Permissions, turn on Full access.</li>
+            <li>Turn on Prevent sleep while running.</li>
+          </ol>
+        </div>
+        <div class="card card-mint">
+          <h3>Select and save it</h3>
+          <ol class="source-list">
+            <li>Return to the setup task.</li>
+            <li>Open the permissions control beneath the prompt box.</li>
+            <li>Choose Full access.</li>
+            <li>Ask Codex to preserve existing settings and make Full access the personal default.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="codex-full-enabled"><span><strong>Full access enabled</strong>The mode is available in the task permissions menu.</span></label>
+        <label class="check"><input type="checkbox" data-check="codex-full-selected"><span><strong>Full access selected</strong>The current task reports Full access before setup begins.</span></label>
+        <label class="check"><input type="checkbox" data-check="codex-sleep"><span><strong>Prevent sleep enabled</strong>The Mac can continue the local task while Remm steps away.</span></label>
+        <label class="check"><input type="checkbox" data-check="codex-full-default"><span><strong>Personal default saved</strong>Codex preserves existing settings and verifies Full access for future local tasks.</span></label>
+      </div>
+      <div class="callout callout-coral"><strong>Trusted folders only.</strong> Full access can read or change files anywhere and use the network. Switch back to Ask for approval before opening unknown downloaded code. Account sign ins, macOS privacy prompts, secrets, destructive actions, and decisions outside the approved plan still require Remm.</div>
+      <span class="page-number">05</span>
     </section>
 
     <section class="print-page" id="before-starting">
@@ -282,7 +316,7 @@
         <label class="check"><input type="checkbox" data-check="prep-policy"><span><strong>Privacy notice reviewed</strong>Meeting recording and full transcript retention must fit employer policy and local law.</span></label>
       </div>
       <div class="callout"><strong>Version one works while the Mac is awake.</strong> A server or always on Mac can come later if you want twenty four hour availability.</div>
-      <span class="page-number">05</span>
+      <span class="page-number">06</span>
     </section>
 
     <section class="print-page" id="phase-one-tools">
@@ -309,7 +343,7 @@ bash setup.sh</div>
         <label class="check"><input type="checkbox" data-check="tools-doppler"><span><strong>Doppler signed in</strong>Remm completes browser sign in. Codex creates the `openclaw-personal-os` project, selects the `dev` config, and verifies it.</span></label>
       </div>
       <p class="small">References: <a href="https://docs.openclaw.ai/install/node">OpenClaw Node guide</a>, <a href="https://cli.github.com/">GitHub CLI</a>, <a href="https://vercel.com/docs/cli">Vercel CLI</a>.</p>
-      <span class="page-number">06</span>
+      <span class="page-number">07</span>
     </section>
 
     <section class="print-page" id="telegram">
@@ -330,7 +364,7 @@ bash setup.sh</div>
       </div>
       <div class="callout callout-blue"><strong>Keep groups disabled initially.</strong> Private DMs are easier to reason about and reduce accidental access.</div>
       <p class="small">Reference: <a href="https://docs.openclaw.ai/channels/telegram">OpenClaw Telegram setup</a>.</p>
-      <span class="page-number">07</span>
+      <span class="page-number">08</span>
     </section>
 
     <section class="print-page" id="wispr">
@@ -349,7 +383,7 @@ bash setup.sh</div>
       </div>
       <div class="callout"><strong>Speak the outcome and the timing.</strong> Repeating requests become TaskNotes recurrence rules, so “every Wednesday at nine” keeps advancing after each completion.</div>
       <p class="small">Reference: <a href="https://docs.wisprflow.ai/articles/3152211871-setup-guide">Wispr Flow setup guide</a>.</p>
-      <span class="page-number">08</span>
+      <span class="page-number">09</span>
     </section>
 
     <section class="print-page" id="obsidian">
@@ -373,7 +407,7 @@ bash setup.sh</div>
         <label class="check"><input type="checkbox" data-check="obsidian-task"><span><strong>Test task appears</strong>Create one TaskNotes task and confirm its file is in `TaskNotes/Tasks`.</span></label>
       </div>
       <p class="small">References: <a href="https://obsidian.md/help/sync/setup">Obsidian Sync setup</a>, <a href="https://tasknotes.dev/">TaskNotes requirements</a>.</p>
-      <span class="page-number">09</span>
+      <span class="page-number">10</span>
     </section>
 
     <section class="print-page" id="calendars">
@@ -391,7 +425,7 @@ bash setup.sh</div>
         <label class="check"><input type="checkbox" data-check="calendar-test"><span><strong>Calendar routing tested</strong>Create one personal test event, then one work event if available.</span></label>
         <label class="check"><input type="checkbox" data-check="gmail-choice"><span><strong>Optional Gmail choice recorded</strong>If enabled, grant read only scopes and test one search.</span></label>
       </div>
-      <span class="page-number">10</span>
+      <span class="page-number">11</span>
     </section>
 
     <section class="print-page" id="daily-note">
@@ -412,7 +446,7 @@ bash setup.sh</div>
         <label class="check"><input type="checkbox" data-check="daily-iphone"><span><strong>Note reaches iPhone</strong>Open Obsidian on iPhone and verify the same note through Sync.</span></label>
       </div>
       <div class="callout callout-mint"><strong>Rule of thumb:</strong> the daily note tells you what deserves attention today. TaskNotes and Vault Recall hold everything else.</div>
-      <span class="page-number">11</span>
+      <span class="page-number">12</span>
     </section>
 
     <section class="print-page" id="granola">
@@ -439,7 +473,7 @@ bash setup.sh</div>
       </div>
       <div class="callout"><strong>Durability note:</strong> the local Granola desktop authentication method is convenient and free, but an app update can change it. The setup doctor reports this failure clearly.</div>
       <p class="small">References: <a href="https://docs.granola.ai/help-center/taking-notes/transcription">Granola transcription</a>, <a href="https://docs.granola.ai/help-center/sharing/exporting-notes">Granola export options</a>.</p>
-      <span class="page-number">12</span>
+      <span class="page-number">13</span>
     </section>
 
     <section class="print-page" id="recall">
@@ -462,7 +496,7 @@ personal-os recall "launch decision and checklist owner" 8</div>
         <label class="check"><input type="checkbox" data-check="recall-empty"><span><strong>Missing evidence is honest</strong>Ask about a made up project and verify the answer says it was not found.</span></label>
       </div>
       <p class="small">Reference: <a href="https://github.com/tobi/qmd">QMD project</a>.</p>
-      <span class="page-number">13</span>
+      <span class="page-number">14</span>
     </section>
 
     <section class="print-page" id="github-vercel">
@@ -481,7 +515,7 @@ vercel</div>
         <label class="check"><input type="checkbox" data-check="build-vercel"><span><strong>Vercel deployment succeeds</strong>Open the public URL and confirm the page loads.</span></label>
         <label class="check"><input type="checkbox" data-check="build-agentic"><span><strong>Agentic CLI test succeeds</strong>Ask Codex to change one sentence, commit it, push it, and deploy the update.</span></label>
       </div>
-      <span class="page-number">14</span>
+      <span class="page-number">15</span>
     </section>
 
     <section class="print-page" id="security">
@@ -502,7 +536,7 @@ vercel</div>
         <label class="check"><input type="checkbox" data-check="security-backup"><span><strong>Obsidian Sync verified</strong>Open a test note on Mac and iPhone before trusting the vault with important work.</span></label>
       </div>
       <p class="small">References: <a href="https://docs.openclaw.ai/tools/exec-approvals">OpenClaw exec approvals</a>, <a href="https://docs.openclaw.ai/gateway/secrets">OpenClaw secrets management</a>.</p>
-      <span class="page-number">15</span>
+      <span class="page-number">16</span>
     </section>
 
     <section class="print-page" id="doctor">
@@ -524,7 +558,7 @@ vercel</div>
         <label class="check"><input type="checkbox" data-check="doctor-deploy"><span><strong>GitHub to Vercel passes</strong>The nonsecret status page is live.</span></label>
       </div>
       <div class="callout callout-blue"><strong>Common fix:</strong> if QMD or OpenClaw reports a native module error, run `node -v`. It should show version 24, then reinstall QMD under that same runtime.</div>
-      <span class="page-number">16</span>
+      <span class="page-number">17</span>
     </section>
 
     <section class="print-page" id="master-prompt">
@@ -536,6 +570,8 @@ vercel</div>
 Success means:
 * My public system repository is located at ~/Openclaw/system.
 * My private runtime is located at ~/Openclaw/runtime.
+* Codex Full access is enabled, selected for this task, and saved as the default for future local tasks on this Mac.
+* Prevent sleep while running is enabled.
 * Install the safe local tools and apps through setup.sh.
 * Guide me through paid ChatGPT with Codex, GitHub CLI, Vercel CLI, Doppler, Telegram BotFather, OpenClaw, Wispr Flow, Obsidian Sync, Granola, two Google calendars, and optional read only Gmail.
 * Configure Obsidian core plugins Bases, Daily Notes, Templates, and Sync.
@@ -552,14 +588,14 @@ Success means:
 
 Stop when: personal-os doctor reports that every required check passes and the controlled voice, task, calendar, Granola, recall, GitHub, and Vercel tests succeed.
 
-Constraints: Preserve existing files. Keep private data in ~/Openclaw/runtime. Keep reusable public code in ~/Openclaw/system. Store secrets through Doppler. Use my own accounts and pause for every personal sign in, permission, private token, paid plan choice, PIN entry, or material decision.
+Constraints: Preserve existing files. Keep private data in ~/Openclaw/runtime. Keep reusable public code in ~/Openclaw/system. Store secrets through Doppler. Use my own accounts. Do not pause for routine Codex command approvals after Full access is active. Pause for every personal sign in, macOS permission, private token, paid plan choice, PIN entry, destructive action, or material decision outside this approved plan.
 
 Create ~/Openclaw if it is missing. Clone https://github.com/CraftYourDesires/openclaw-personal-os into ~/Openclaw/system if that folder is missing. Read START-HERE.md, README.md, DECISIONS.md, setup.sh, and guide/index.html before installing.
 
-Run the safe setup steps yourself. Give me one short human instruction at a time. Wait for me to finish each sign in or permission screen, verify the result, then continue. Run personal-os doctor after each phase and use its first required FIX item as the next step.</pre>
+First verify that this task reports Full access and that Prevent sleep while running is enabled. Preserve my existing Codex settings and make Full access the default for my future local tasks using the current Codex configuration format. Then run the safe setup steps yourself. Give me one short human instruction at a time only when I must sign in, approve a macOS privacy prompt, enter a private value, or make a material decision. Continue routine installation and verification without asking for Codex command approval. Run personal-os doctor after each phase and use its first required FIX item as the next step.</pre>
       <button class="screen-only" id="copy-prompt" type="button">Copy master prompt</button>
       <div class="callout callout-mint"><strong>Done means verified.</strong> The doctor, controlled meeting, recall question, and status deployment prove the connections, not just the presence of installed apps.</div>
-      <span class="page-number">17</span>
+      <span class="page-number">18</span>
     </section>
 
     <section class="print-page" id="sources">
@@ -571,6 +607,7 @@ Run the safe setup steps yourself. Give me one short human instruction at a time
         <li><a href="https://docs.openclaw.ai/providers/openai">OpenClaw OpenAI and Codex auth</a></li>
         <li><a href="https://docs.openclaw.ai/channels/telegram">OpenClaw Telegram channel</a></li>
         <li><a href="https://docs.openclaw.ai/tools/exec-approvals">OpenClaw exec approvals</a></li>
+        <li><a href="https://learn.chatgpt.com/docs/permission-modes">Codex permission modes</a></li>
         <li><a href="https://docs.openclaw.ai/gateway/secrets">OpenClaw secrets management</a></li>
         <li><a href="https://docs.wisprflow.ai/articles/3152211871-setup-guide">Wispr Flow setup</a></li>
         <li><a href="https://docs.granola.ai/help-center/taking-notes/transcription">Granola transcription</a></li>
@@ -586,7 +623,7 @@ Run the safe setup steps yourself. Give me one short human instruction at a time
         <div class="card card-mint"><h3>The public template owns</h3><p>Only reusable setup code, empty vault structure, guide assets, tests, and nonsecret status page.</p></div>
       </div>
       <p class="footer-note">MIT licensed · CraftYourDesires/openclaw-personal-os</p>
-      <span class="page-number">18</span>
+      <span class="page-number">19</span>
     </section>
   </main>
 

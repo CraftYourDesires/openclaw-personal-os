@@ -23,6 +23,9 @@ class HandoffTest(unittest.TestCase):
         self.assertIn('~/Openclaw/system', start)
         self.assertIn('~/Openclaw/runtime', start)
         self.assertIn('https://github.com/CraftYourDesires/openclaw-personal-os', start)
+        self.assertIn('Full access', start)
+        self.assertIn('Prevent sleep while running', start)
+        self.assertIn('Do not pause for routine Codex command approvals', start)
         self.assertIn('Stop when:', start)
 
     def test_old_runtime_root_is_absent_from_instruction_sources(self):

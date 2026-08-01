@@ -130,3 +130,15 @@ Evidence:
 
 * https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
 * https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+## 2026-08-01: Use Codex Full access for Remm's trusted local setup
+
+Decision: Tell Remm to enable Full access in Codex Settings, select it for the setup task, turn on Prevent sleep while running, and ask Codex to preserve his existing settings while making Full access his personal default.
+
+Reason: The user wants Codex to complete long installation and project tasks without routine approval interruptions. Full access is the documented desktop mode for unrestricted local execution. The guide keeps human pauses for account sign ins, macOS privacy prompts, secrets, destructive actions, and decisions outside the approved plan. It also limits the recommendation to Remm's personal Mac and trusted folders.
+
+Evidence:
+
+* https://learn.chatgpt.com/docs/permission-modes
+* https://learn.chatgpt.com/docs/sandboxing
+* https://learn.chatgpt.com/docs/reference/settings

@@ -20,14 +20,16 @@ For an introductory conversation, use the landscape presenter PDF in `output/pdf
 ## Start here
 
 1. Install the Codex desktop app and sign in with Remm's paid ChatGPT account.
-2. In Finder, press Shift, Command, and H to open the Home folder.
-3. Create one folder named `Openclaw`.
-4. Open `~/Openclaw` in Codex.
-5. Paste the bootstrap prompt from `START-HERE.md`.
-6. Let Codex clone this repository into `~/Openclaw/system` and create private data under `~/Openclaw/runtime`.
-7. Follow one account or permission instruction at a time.
-8. Run `personal-os services-start` after accounts and Doppler secrets are ready.
-9. Run `personal-os doctor` until every required check passes.
+2. Open Settings, choose General, enable Full access under Permissions, and turn on Prevent sleep while running.
+3. Select Full access from the permissions control beneath the prompt box.
+4. In Finder, press Shift, Command, and H to open the Home folder.
+5. Create one folder named `Openclaw`.
+6. Open `~/Openclaw` in Codex.
+7. Paste the bootstrap prompt from `START-HERE.md`.
+8. Let Codex make Full access the personal default, clone this repository into `~/Openclaw/system`, and create private data under `~/Openclaw/runtime`.
+9. Follow one account or macOS permission instruction at a time while Codex continues routine work without approval interruptions.
+10. Run `personal-os services-start` after accounts and Doppler secrets are ready.
+11. Run `personal-os doctor` until every required check passes.
 
 ## Three onboarding phases
 
@@ -70,6 +72,8 @@ Excalidraw is included as an optional plugin and starts disabled.
 ## Security posture
 
 The setup repository lives at `~/Openclaw/system`. The OpenClaw agent works inside `~/Openclaw/runtime`. Routine actions use reviewed helper commands. Telegram accepts only the owner's numeric user ID. Host execution uses an allowlist. App installation and other supported high risk actions require a short lived PIN authorization. Secrets live in Doppler and are injected at runtime.
+
+Remm's Codex uses Full access so approved setup and project work can continue without routine command prompts. Use this only on his personal Mac and in trusted folders. Switch back to Ask for approval before opening unknown downloaded code. Full access does not bypass account sign ins, macOS privacy controls, the OpenClaw PIN gate, or the requirement to confirm destructive actions outside the approved plan.
 
 Google OAuth client values also live in Doppler. The helper creates a temporary credential file for `gog`, registers it, and removes that temporary file immediately.
 

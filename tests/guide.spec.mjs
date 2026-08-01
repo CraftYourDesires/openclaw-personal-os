@@ -1,13 +1,15 @@
 import { expect, test } from "@playwright/test";
 
-test("guide contains eighteen complete printable pages", async ({ page }) => {
+test("guide contains nineteen complete printable pages", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle("Remm's OpenClaw Personal OS");
-  await expect(page.locator(".print-page")).toHaveCount(18);
+  await expect(page.locator(".print-page")).toHaveCount(19);
   await expect(page.locator("svg[aria-labelledby='diagram-title diagram-desc']")).toBeVisible();
   await expect(page.locator("#prompt-text")).toContainText("personal-os doctor");
   await expect(page.locator("#first-folder")).toContainText("~/Openclaw/system");
   await expect(page.locator("#first-folder")).toContainText("~/Openclaw/runtime");
+  await expect(page.locator("#codex-full-access")).toContainText("Full access");
+  await expect(page.locator("#codex-full-access")).toContainText("Prevent sleep while running");
   await expect(page.locator("#prompt-text")).toContainText("START-HERE.md");
 });
 
