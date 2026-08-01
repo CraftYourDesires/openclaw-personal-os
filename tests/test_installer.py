@@ -37,6 +37,8 @@ class InstallerTest(unittest.TestCase):
             self.assertEqual(before, digest(note))
             self.assertTrue((home / '.openclaw' / 'openclaw.json').exists())
             self.assertTrue((runtime / 'workspace' / 'skills' / 'vault-recall' / 'SKILL.md').exists())
+            profile = (home / '.zprofile').read_text(encoding='utf-8') if (home / '.zprofile').exists() else ''
+            self.assertIn('.local/bin', profile)
 
 
 if __name__ == '__main__':

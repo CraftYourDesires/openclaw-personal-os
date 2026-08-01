@@ -29,12 +29,18 @@ install_packages() {
   brew install "$LONG_OPTION"cask obsidian granola wispr-flow
   export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
   /opt/homebrew/opt/node@24/bin/npm install -g @openai/codex openclaw vercel @tobilu/qmd
+}
 
+configure_shell_path() {
   profile_file="$HOME/.zprofile"
-  profile_line='export PATH="/opt/homebrew/opt/node@24/bin:$PATH"'
+  node_profile_line='export PATH="/opt/homebrew/opt/node@24/bin:$PATH"'
+  local_profile_line='export PATH="$HOME/.local/bin:$PATH"'
   touch "$profile_file"
-  if ! grep -Fq "$profile_line" "$profile_file"; then
-    printf '\n# OpenClaw Personal OS runtime\n%s\n' "$profile_line" >> "$profile_file"
+  if ! grep -Fq "$node_profile_line" "$profile_file"; then
+    printf '\n# OpenClaw Personal OS runtime\n%s\n' "$node_profile_line" >> "$profile_file"
+  fi
+  if ! grep -Fq "$local_profile_line" "$profile_file"; then
+    printf '%s\n' "$local_profile_line" >> "$profile_file"
   fi
 }
 
@@ -57,6 +63,7 @@ fi
 mkdir -p "$HOME/.local/bin"
 ln -sfn "$RUNTIME_ROOT/bin/personal_os.py" "$HOME/.local/bin/personal-os"
 ln -sfn "$SCRIPT_DIR/doctor.sh" "$HOME/.local/bin/personal-os-doctor"
+configure_shell_path
 
 printf '\nLocal installation complete.\n'
 printf 'Open guide/index.html and continue with Phase 1 account sign ins.\n'

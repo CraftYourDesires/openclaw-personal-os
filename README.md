@@ -55,6 +55,13 @@ Community plugins:
 
 Excalidraw is included as an optional plugin and starts disabled.
 
+## Required agent abilities
+
+* Vault Recall is the custom installed skill. It searches QMD evidence, resolves transcript conflicts, and preserves the Granola approval gate.
+* `gog` is the bundled OpenClaw Google Workspace skill used for both calendars and optional read only Gmail.
+* Task capture, repeating tasks, daily notes, meeting import, and action approval are reviewed `personal-os` command workflows defined in the OpenClaw workspace instructions.
+* GitHub CLI and Vercel CLI are agentic project tools available to Codex after Remm signs into his own accounts.
+
 ## Security posture
 
 The OpenClaw agent works inside `~/PersonalOS/runtime`. Routine actions use reviewed helper commands. Telegram accepts only the owner's numeric user ID. Host execution uses an allowlist. App installation and other supported high risk actions require a short lived PIN authorization. Secrets live in Doppler and are injected at runtime.
