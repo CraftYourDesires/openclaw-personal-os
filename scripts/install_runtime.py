@@ -90,6 +90,7 @@ def main() -> int:
     config_path = config_root / 'config.json'
     if not config_path.exists():
         config_path.write_text(json.dumps({
+            'system_root': str(system_root),
             'runtime_root': str(runtime_root),
             'vault': str(vault_root),
             'workspace': str(workspace_root),

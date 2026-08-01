@@ -2,7 +2,7 @@
 
 OpenClaw Personal OS is a guided Mac setup for a voice first personal assistant. It connects Wispr Flow, Telegram, OpenClaw, Codex, Granola, Obsidian, Google Calendar, GitHub, and Vercel without expecting the owner to be technical.
 
-The interactive guide is the canonical onboarding document. Open `guide/index.html` in a browser, or read the matching PDF in `guide/remm-openclaw-personal-os.pdf`.
+Begin with `START-HERE.md`. The interactive guide is the canonical onboarding document. Open `guide/index.html` in a browser, or read the matching PDF in `guide/remm-openclaw-personal-os.pdf`.
 
 For an introductory conversation, use the landscape presenter PDF in `output/pdf/remm-personal-os-call-overview.pdf`. It explains the system map and follows the nine part call sequence before any installation begins.
 
@@ -19,12 +19,15 @@ For an introductory conversation, use the landscape presenter PDF in `output/pdf
 
 ## Start here
 
-1. Install the Codex desktop app and sign in with a paid ChatGPT account.
-2. Open this repository in Codex.
-3. Attach `guide/index.html` or the PDF and paste the master onboarding prompt from the guide.
-4. Let Codex run `bash setup.sh` and follow the pauses for account sign ins.
-5. Run `personal-os services-start` after accounts and Doppler secrets are ready.
-6. Run `personal-os doctor` until every required check passes.
+1. Install the Codex desktop app and sign in with Remm's paid ChatGPT account.
+2. In Finder, press Shift, Command, and H to open the Home folder.
+3. Create one folder named `Openclaw`.
+4. Open `~/Openclaw` in Codex.
+5. Paste the bootstrap prompt from `START-HERE.md`.
+6. Let Codex clone this repository into `~/Openclaw/system` and create private data under `~/Openclaw/runtime`.
+7. Follow one account or permission instruction at a time.
+8. Run `personal-os services-start` after accounts and Doppler secrets are ready.
+9. Run `personal-os doctor` until every required check passes.
 
 ## Three onboarding phases
 
@@ -66,7 +69,7 @@ Excalidraw is included as an optional plugin and starts disabled.
 
 ## Security posture
 
-The OpenClaw agent works inside `~/PersonalOS/runtime`. Routine actions use reviewed helper commands. Telegram accepts only the owner's numeric user ID. Host execution uses an allowlist. App installation and other supported high risk actions require a short lived PIN authorization. Secrets live in Doppler and are injected at runtime.
+The setup repository lives at `~/Openclaw/system`. The OpenClaw agent works inside `~/Openclaw/runtime`. Routine actions use reviewed helper commands. Telegram accepts only the owner's numeric user ID. Host execution uses an allowlist. App installation and other supported high risk actions require a short lived PIN authorization. Secrets live in Doppler and are injected at runtime.
 
 Google OAuth client values also live in Doppler. The helper creates a temporary credential file for `gog`, registers it, and removes that temporary file immediately.
 
@@ -76,6 +79,7 @@ This setup mixes work and personal information in one private vault. Confirm tha
 
 ## Project files
 
+* `START-HERE.md`: exact blank Mac folder, cloning, prompt, and resume instructions
 * `setup.sh`: idempotent local installer
 * `doctor.sh`: one command health check
 * `scripts/personal_os.py`: daily note, Granola, task, reminder, calendar, and recall commands

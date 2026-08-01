@@ -23,6 +23,7 @@ class PersonalOSTest(unittest.TestCase):
         self.vault.mkdir()
         self.workspace.mkdir()
         self.cfg = {
+            'system_root': str(ROOT),
             'runtime_root': str(self.root),
             'vault': str(self.vault),
             'workspace': str(self.workspace),

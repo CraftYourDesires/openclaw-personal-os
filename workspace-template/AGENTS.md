@@ -50,7 +50,7 @@ Approve selected Granola actions:
 
 ## Risk boundary
 
-Use the routine action map for normal work. Keep file access inside `~/PersonalOS/runtime`. Ask Remm for PIN authorization before supported app installation. Let OpenClaw host approvals handle any new executable that is absent from the reviewed allowlist.
+Use the routine action map for normal work. Keep file access inside `~/Openclaw/runtime`. Ask Remm for PIN authorization before supported app installation. Let OpenClaw host approvals handle any new executable that is absent from the reviewed allowlist.
 
 ## Email boundary
 

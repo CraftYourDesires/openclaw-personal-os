@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-RUNTIME_ROOT="${PERSONAL_OS_ROOT:-$HOME/PersonalOS/runtime}"
+RUNTIME_ROOT="${PERSONAL_OS_ROOT:-$HOME/Openclaw/runtime}"
 SKIP_PACKAGES="${PERSONAL_OS_SKIP_PACKAGES:-0}"
 SKIP_PLUGINS="${PERSONAL_OS_SKIP_PLUGINS:-0}"
 LONG_OPTION="-$(printf '\055')"
@@ -66,5 +66,7 @@ ln -sfn "$SCRIPT_DIR/doctor.sh" "$HOME/.local/bin/personal-os-doctor"
 configure_shell_path
 
 printf '\nLocal installation complete.\n'
-printf 'Open guide/index.html and continue with Phase 1 account sign ins.\n'
+printf 'System folder: %s\n' "$SCRIPT_DIR"
+printf 'Private runtime folder: %s\n' "$RUNTIME_ROOT"
+printf 'Open %s/guide/index.html and continue with Phase 1 account sign ins.\n' "$SCRIPT_DIR"
 printf 'Run personal-os doctor after each phase.\n'

@@ -348,22 +348,50 @@ def draw_section_six(c, page_num):
 
 
 def draw_section_seven(c, page_num):
-    page_header(c, "7", "Start with one Codex prompt", "Codex performs the safe technical work and pauses when Remm must personally participate.", page_num)
-    card(c, 42, 306, 210, 148, "1. Install Codex", "Install the Codex desktop app and sign in using Remm's paid ChatGPT account.", fill=MINT_PALE, accent=MINT)
-    card(c, 291, 306, 210, 148, "2. Share the repository", "Give Codex the public repository link and ask it to clone the project locally.", fill=BLUE_PALE, accent=BLUE)
-    card(c, 540, 306, 210, 148, "3. Paste the prompt", "Use the master prompt from the guide. Codex reads the files before installing anything.", fill=CORAL_PALE, accent=CORAL)
+    page_header(c, "7", "Start with one Home folder", "Remm makes one folder in Finder. Codex creates the public system and private runtime underneath it.", page_num)
+    card(c, 42, 302, 165, 155, "Open Home", "In Finder, press Shift, Command, and H.", fill=MINT_PALE, accent=MINT, number=1)
+    card(c, 223, 302, 165, 155, "New folder", "Choose File, then New Folder. Name it Openclaw.", fill=BLUE_PALE, accent=BLUE, number=2)
+    card(c, 404, 302, 165, 155, "Open Codex", "Select ~/Openclaw as the Codex workspace.", fill=CORAL_PALE, accent=CORAL, number=3)
+    card(c, 585, 302, 165, 155, "Paste prompt", "Codex clones the repository and runs setup.", fill=CREAM, accent=GOLD, number=4)
+    c.setFillColor(NAVY)
+    c.roundRect(42, 66, 708, 198, 20, fill=1, stroke=0)
+    c.setFillColor(MINT)
+    c.setFont("Helvetica-Bold", 13)
+    c.drawString(66, 229, "THE FINISHED FOLDER TREE")
+    c.setFont("Courier-Bold", 15)
+    c.setFillColor(white)
+    tree = [
+        "~/Openclaw/",
+        "  system/       public repository and setup code",
+        "  runtime/      private personal data",
+        "    vault/      Obsidian notes and tasks",
+        "    workspace/  OpenClaw instructions and skills",
+        "    bin/        reviewed helper commands",
+        "    logs/       local service logs",
+    ]
+    y = 202
+    for line in tree:
+        c.drawString(70, y, line)
+        y -= 20
+
+
+def draw_section_seven_prompt(c, page_num):
+    page_header(c, "7 continued", "One prompt starts the guided setup", "Codex performs the safe technical work and pauses when Remm must personally participate.", page_num)
+    card(c, 42, 306, 210, 148, "1. Clone", "Create ~/Openclaw/system from the public GitHub repository.", fill=MINT_PALE, accent=MINT)
+    card(c, 291, 306, 210, 148, "2. Read", "Read START-HERE.md, the guide, decisions, and installer before acting.", fill=BLUE_PALE, accent=BLUE)
+    card(c, 540, 306, 210, 148, "3. Guide", "Give Remm one short sign in or permission instruction at a time.", fill=CORAL_PALE, accent=CORAL)
     c.setFillColor(NAVY)
     c.roundRect(42, 66, 708, 200, 20, fill=1, stroke=0)
     c.setFillColor(MINT)
     c.setFont("Helvetica-Bold", 11)
     c.drawString(64, 234, "COPY INTO CODEX")
     prompt = (
-        "Set up my OpenClaw Personal OS using https://github.com/CraftYourDesires/"
-        "openclaw-personal-os. Read README.md, DECISIONS.md, setup.sh, and guide/index.html first. "
-        "Walk me through one step at a time. Perform safe setup work yourself. Pause only when I must "
-        "sign in, approve permission, create a private token, choose a plan, or make a meaningful decision. "
-        "Use my own accounts, store secrets through Doppler, preserve existing files, and continue until every "
-        "required doctor check and controlled test passes."
+        "Goal: complete my OpenClaw Personal OS setup from a blank Mac. Create ~/Openclaw if missing. "
+        "Clone https://github.com/CraftYourDesires/openclaw-personal-os into ~/Openclaw/system and keep "
+        "private data in ~/Openclaw/runtime. Read START-HERE.md, README.md, DECISIONS.md, setup.sh, and "
+        "guide/index.html first. Run safe setup work yourself. Give me one short human instruction at a time, "
+        "wait for me, verify it, and continue until personal-os doctor and every controlled test pass. Use my "
+        "own accounts and store secrets through Doppler."
     )
     text_block(c, prompt, 64, 207, 663, font="Helvetica", size=12.2, color=white, leading=17)
 
@@ -468,9 +496,11 @@ def build():
     c.showPage()
     draw_section_seven(c, 9)
     c.showPage()
-    draw_section_eight(c, 10)
+    draw_section_seven_prompt(c, 10)
     c.showPage()
-    draw_section_nine(c, 11)
+    draw_section_eight(c, 11)
+    c.showPage()
+    draw_section_nine(c, 12)
     c.save()
     print(OUTPUT)
 

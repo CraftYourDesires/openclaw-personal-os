@@ -211,6 +211,61 @@
       <span class="page-number">02</span>
     </section>
 
+    <section class="print-page" id="handoff">
+      <p class="eyebrow">What Kaz sends Remm</p>
+      <h2>One repository contains the complete package</h2>
+      <p class="dek">Send the repository link. The HTML guide, both PDFs, installer, folder templates, skills, tests, and practice deployment are already inside it.</p>
+      <div class="grid-3">
+        <div class="card card-blue"><span class="number">1</span><h3>Repository</h3><p>Codex clones the complete public package from GitHub.</p></div>
+        <div class="card card-mint"><span class="number">2</span><h3>Interactive HTML</h3><p>`guide/index.html` is the detailed checklist and canonical setup guide.</p></div>
+        <div class="card card-coral"><span class="number">3</span><h3>Two PDFs</h3><p>The full setup PDF teaches installation. The short landscape PDF supports the first conversation.</p></div>
+      </div>
+      <div class="command">https://github.com/CraftYourDesires/openclaw-personal-os</div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="handoff-repo"><span><strong>Repository link received</strong>This one link gives Codex every reusable setup file.</span></label>
+        <label class="check"><input type="checkbox" data-check="handoff-start"><span><strong>START-HERE.md located</strong>Codex reads this file before installing or asking account questions.</span></label>
+        <label class="check"><input type="checkbox" data-check="handoff-ownership"><span><strong>Account ownership understood</strong>Remm uses his own ChatGPT, Telegram, Google, GitHub, Vercel, Doppler, Granola, Wispr Flow, and Obsidian accounts.</span></label>
+      </div>
+      <div class="callout"><strong>Nothing needs to be copied out of the repository.</strong> Open the HTML locally after cloning. Attach either PDF to a Codex task when a visual reference is useful.</div>
+      <span class="page-number">03</span>
+    </section>
+
+    <section class="print-page" id="first-folder">
+      <p class="eyebrow">The first five steps</p>
+      <h2>Create one Home folder, then let Codex work</h2>
+      <p class="dek">The folder is named `Openclaw` and sits directly inside Remm's Mac Home folder. Codex creates everything underneath it.</p>
+      <div class="grid-2">
+        <div class="card card-mint">
+          <h3>Remm does this in Finder</h3>
+          <ol class="source-list">
+            <li>Install Codex and sign in with paid ChatGPT.</li>
+            <li>Open Finder.</li>
+            <li>Press Shift, Command, and H.</li>
+            <li>Choose File, then New Folder.</li>
+            <li>Name the folder `Openclaw`.</li>
+            <li>Open that folder in Codex.</li>
+          </ol>
+        </div>
+        <div class="card card-blue">
+          <h3>Codex creates this structure</h3>
+          <div class="command">~/Openclaw/
+  system/      public repository
+  runtime/     private personal data
+    vault/     Obsidian
+    workspace/ OpenClaw
+    bin/       helper commands
+    logs/      service logs</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="folder-home"><span><strong>`~/Openclaw` created</strong>The folder is inside Home, not Desktop, Downloads, Documents, or iCloud Drive.</span></label>
+        <label class="check"><input type="checkbox" data-check="folder-codex"><span><strong>Folder opened in Codex</strong>Codex creates public code at `~/Openclaw/system` and private data at `~/Openclaw/runtime`.</span></label>
+        <label class="check"><input type="checkbox" data-check="folder-clone"><span><strong>Repository cloned into `system`</strong>The exact final path is `~/Openclaw/system`.</span></label>
+      </div>
+      <div class="callout callout-blue"><strong>Remm does not type Git commands.</strong> Paste the master prompt on page 17. Codex creates the folders, clones the repository, reads the files, and runs the installer.</div>
+      <span class="page-number">04</span>
+    </section>
+
     <section class="print-page" id="before-starting">
       <p class="eyebrow">Before starting</p>
       <h2>What you need</h2>
@@ -227,14 +282,15 @@
         <label class="check"><input type="checkbox" data-check="prep-policy"><span><strong>Privacy notice reviewed</strong>Meeting recording and full transcript retention must fit employer policy and local law.</span></label>
       </div>
       <div class="callout"><strong>Version one works while the Mac is awake.</strong> A server or always on Mac can come later if you want twenty four hour availability.</div>
-      <span class="page-number">03</span>
+      <span class="page-number">05</span>
     </section>
 
     <section class="print-page" id="phase-one-tools">
       <span class="phase-tag">Phase 1 · Accounts and voice</span>
       <h2>Install the agentic toolkit</h2>
       <p class="dek">Codex runs the installer. It pins Node 24 so OpenClaw and QMD share one supported runtime.</p>
-      <div class="command">bash setup.sh</div>
+      <div class="command">cd "$HOME/Openclaw/system"
+bash setup.sh</div>
       <div class="grid-2">
         <div class="card">
           <h3>Command line tools</h3>
@@ -250,32 +306,31 @@
         <label class="check"><input type="checkbox" data-check="tools-codex"><span><strong>Codex CLI signed in</strong>Run `codex login` and use the same paid ChatGPT account.</span></label>
         <label class="check"><input type="checkbox" data-check="tools-github"><span><strong>GitHub CLI signed in</strong>Run `gh auth login`, choose GitHub.com, HTTPS, and browser sign in.</span></label>
         <label class="check"><input type="checkbox" data-check="tools-vercel"><span><strong>Vercel CLI signed in</strong>Run `vercel login` and use the account that will own Remm's deployments.</span></label>
-        <label class="check"><input type="checkbox" data-check="tools-doppler"><span><strong>Doppler signed in</strong>Create the `openclaw-personal-os` project with a `dev` config.</span></label>
+        <label class="check"><input type="checkbox" data-check="tools-doppler"><span><strong>Doppler signed in</strong>Remm completes browser sign in. Codex creates the `openclaw-personal-os` project, selects the `dev` config, and verifies it.</span></label>
       </div>
       <p class="small">References: <a href="https://docs.openclaw.ai/install/node">OpenClaw Node guide</a>, <a href="https://cli.github.com/">GitHub CLI</a>, <a href="https://vercel.com/docs/cli">Vercel CLI</a>.</p>
-      <span class="page-number">04</span>
+      <span class="page-number">06</span>
     </section>
 
     <section class="print-page" id="telegram">
       <span class="phase-tag">Phase 1 · Private doorway</span>
       <h2>Create the Telegram bot</h2>
       <p class="dek">Telegram is the single place Remm talks to OpenClaw. The bot accepts direct messages only from Remm's numeric Telegram user ID.</p>
-      <div class="flow">
-        <div class="flow-step"><b>1</b>Open the verified <strong>@BotFather</strong> account.</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><b>2</b>Send <strong>/newbot</strong> and choose a name.</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><b>3</b>Save the token in Doppler, then pair the first DM.</div>
+      <div class="grid-2">
+        <div class="card card-blue"><span class="number">1</span><h3>Create</h3><p>Open the verified <strong>@BotFather</strong>, send <strong>/newbot</strong>, and choose the bot's display name and username.</p></div>
+        <div class="card card-mint"><span class="number">2</span><h3>Store</h3><p>Copy the bot token once. Paste it only into the private Doppler entry Codex opens.</p></div>
+        <div class="card card-coral"><span class="number">3</span><h3>Message</h3><p>Open the new bot from BotFather, tap Start, and send the message <strong>Hello</strong>.</p></div>
+        <div class="card"><span class="number">4</span><h3>Pair</h3><p>Tell Codex the message was sent. Codex reads the latest private update, confirms Remm's name, and stores the numeric sender ID.</p></div>
       </div>
       <div class="checklist">
         <label class="check"><input type="checkbox" data-check="telegram-bot"><span><strong>Bot created with @BotFather</strong>Confirm the username is exactly @BotFather before sharing a token.</span></label>
         <label class="check"><input type="checkbox" data-check="telegram-secret"><span><strong>Token stored in Doppler</strong>Secret name: `TELEGRAM_BOT_TOKEN`. Never paste it into the repository.</span></label>
-        <label class="check"><input type="checkbox" data-check="telegram-owner"><span><strong>Numeric owner ID stored</strong>Config name: `TELEGRAM_USER_ID`. This is the only accepted sender.</span></label>
+        <label class="check"><input type="checkbox" data-check="telegram-owner"><span><strong>Numeric owner ID stored</strong>Codex confirms the sender name before storing `TELEGRAM_USER_ID`. This is the only accepted sender.</span></label>
         <label class="check"><input type="checkbox" data-check="telegram-test"><span><strong>Private DM tested</strong>Send “Create a test task for today” and verify one TaskNotes file appears.</span></label>
       </div>
       <div class="callout callout-blue"><strong>Keep groups disabled initially.</strong> Private DMs are easier to reason about and reduce accidental access.</div>
       <p class="small">Reference: <a href="https://docs.openclaw.ai/channels/telegram">OpenClaw Telegram setup</a>.</p>
-      <span class="page-number">05</span>
+      <span class="page-number">07</span>
     </section>
 
     <section class="print-page" id="wispr">
@@ -294,13 +349,13 @@
       </div>
       <div class="callout"><strong>Speak the outcome and the timing.</strong> Repeating requests become TaskNotes recurrence rules, so “every Wednesday at nine” keeps advancing after each completion.</div>
       <p class="small">Reference: <a href="https://docs.wisprflow.ai/articles/3152211871-setup-guide">Wispr Flow setup guide</a>.</p>
-      <span class="page-number">06</span>
+      <span class="page-number">08</span>
     </section>
 
     <section class="print-page" id="obsidian">
       <span class="phase-tag">Phase 2 · Daily operating system</span>
       <h2>Open the Obsidian vault</h2>
-      <p class="dek">The installer creates `~/PersonalOS/runtime/vault`. Open that folder as an Obsidian vault, then connect it to Obsidian Sync.</p>
+      <p class="dek">The installer creates `~/Openclaw/runtime/vault`. Open that folder as an Obsidian vault, then connect it to Obsidian Sync.</p>
       <div class="plugin-list">
         <div class="plugin"><span class="plugin-icon">B</span><span><strong>Bases</strong><br><span class="small">Required core plugin for TaskNotes views</span></span></div>
         <div class="plugin"><span class="plugin-icon">D</span><span><strong>Daily Notes</strong><br><span class="small">Opens the current day</span></span></div>
@@ -312,13 +367,13 @@
         <div class="plugin optional"><span class="plugin-icon">EX</span><span><strong>Excalidraw</strong><br><span class="small">Optional and disabled initially</span></span></div>
       </div>
       <div class="checklist">
-        <label class="check"><input type="checkbox" data-check="obsidian-vault"><span><strong>Vault opened</strong>Choose “Open folder as vault” and select `~/PersonalOS/runtime/vault`.</span></label>
+        <label class="check"><input type="checkbox" data-check="obsidian-vault"><span><strong>Vault opened</strong>Choose “Open folder as vault” and select `~/Openclaw/runtime/vault`.</span></label>
         <label class="check"><input type="checkbox" data-check="obsidian-trust"><span><strong>Community plugins trusted</strong>Review the listed plugins, then enable community plugins.</span></label>
         <label class="check"><input type="checkbox" data-check="obsidian-sync"><span><strong>Obsidian Sync connected</strong>Create or select a private remote vault, then connect the iPhone.</span></label>
         <label class="check"><input type="checkbox" data-check="obsidian-task"><span><strong>Test task appears</strong>Create one TaskNotes task and confirm its file is in `TaskNotes/Tasks`.</span></label>
       </div>
       <p class="small">References: <a href="https://obsidian.md/help/sync/setup">Obsidian Sync setup</a>, <a href="https://tasknotes.dev/">TaskNotes requirements</a>.</p>
-      <span class="page-number">07</span>
+      <span class="page-number">09</span>
     </section>
 
     <section class="print-page" id="calendars">
@@ -330,13 +385,13 @@
       <div class="decision"><b>New events</b><span>Infer personal or work from context. Ask only when the destination is genuinely ambiguous.</span></div>
       <div class="decision"><b>Gmail</b><span>Optional and read only. Search and summarize only. Sending stays disabled in version one.</span></div>
       <div class="checklist">
-        <label class="check"><input type="checkbox" data-check="calendar-oauth"><span><strong>Google OAuth app created</strong>Choose Desktop app in Google Cloud. Store the client ID and secret in Doppler, then run `personal-os google-credentials`.</span></label>
+        <label class="check"><input type="checkbox" data-check="calendar-oauth"><span><strong>Google OAuth app created</strong>Codex opens Google Cloud and guides one screen at a time. Choose Desktop app. Store the client ID and secret in Doppler, then let Codex run `personal-os google-credentials`.</span></label>
         <label class="check"><input type="checkbox" data-check="calendar-personal"><span><strong>Personal calendar connected</strong>Run `personal-os google-auth personal EMAIL`. The browser asks for consent and the account is saved automatically.</span></label>
         <label class="check"><input type="checkbox" data-check="calendar-work"><span><strong>Work calendar connected or marked pending</strong>Do not block the system when company policy prevents OAuth.</span></label>
         <label class="check"><input type="checkbox" data-check="calendar-test"><span><strong>Calendar routing tested</strong>Create one personal test event, then one work event if available.</span></label>
         <label class="check"><input type="checkbox" data-check="gmail-choice"><span><strong>Optional Gmail choice recorded</strong>If enabled, grant read only scopes and test one search.</span></label>
       </div>
-      <span class="page-number">08</span>
+      <span class="page-number">10</span>
     </section>
 
     <section class="print-page" id="daily-note">
@@ -357,7 +412,7 @@
         <label class="check"><input type="checkbox" data-check="daily-iphone"><span><strong>Note reaches iPhone</strong>Open Obsidian on iPhone and verify the same note through Sync.</span></label>
       </div>
       <div class="callout callout-mint"><strong>Rule of thumb:</strong> the daily note tells you what deserves attention today. TaskNotes and Vault Recall hold everything else.</div>
-      <span class="page-number">09</span>
+      <span class="page-number">11</span>
     </section>
 
     <section class="print-page" id="granola">
@@ -384,7 +439,7 @@
       </div>
       <div class="callout"><strong>Durability note:</strong> the local Granola desktop authentication method is convenient and free, but an app update can change it. The setup doctor reports this failure clearly.</div>
       <p class="small">References: <a href="https://docs.granola.ai/help-center/taking-notes/transcription">Granola transcription</a>, <a href="https://docs.granola.ai/help-center/sharing/exporting-notes">Granola export options</a>.</p>
-      <span class="page-number">10</span>
+      <span class="page-number">12</span>
     </section>
 
     <section class="print-page" id="recall">
@@ -407,7 +462,7 @@ personal-os recall "launch decision and checklist owner" 8</div>
         <label class="check"><input type="checkbox" data-check="recall-empty"><span><strong>Missing evidence is honest</strong>Ask about a made up project and verify the answer says it was not found.</span></label>
       </div>
       <p class="small">Reference: <a href="https://github.com/tobi/qmd">QMD project</a>.</p>
-      <span class="page-number">11</span>
+      <span class="page-number">13</span>
     </section>
 
     <section class="print-page" id="github-vercel">
@@ -418,16 +473,15 @@ personal-os recall "launch decision and checklist owner" 8</div>
         <div class="card card-blue"><span class="number">1</span><h3>Own the accounts</h3><p>Remm signs in to GitHub and Vercel. Projects belong to Remm, not to the template author.</p></div>
         <div class="card card-coral"><span class="number">2</span><h3>Deploy the status page</h3><p>The `status` folder contains a nonsecret first project that proves GitHub to Vercel works.</p></div>
       </div>
-      <div class="command">cd status
-vercel
-vercel deploy</div>
+      <div class="command">cd "$HOME/Openclaw/system/status"
+vercel</div>
       <div class="checklist">
         <label class="check"><input type="checkbox" data-check="build-repo"><span><strong>Private practice repository created</strong>Use this public template to create a private Remm owned project.</span></label>
         <label class="check"><input type="checkbox" data-check="build-status"><span><strong>Status page committed</strong>The page contains no names, calendars, tasks, transcripts, tokens, or private URLs.</span></label>
         <label class="check"><input type="checkbox" data-check="build-vercel"><span><strong>Vercel deployment succeeds</strong>Open the public URL and confirm the page loads.</span></label>
         <label class="check"><input type="checkbox" data-check="build-agentic"><span><strong>Agentic CLI test succeeds</strong>Ask Codex to change one sentence, commit it, push it, and deploy the update.</span></label>
       </div>
-      <span class="page-number">12</span>
+      <span class="page-number">14</span>
     </section>
 
     <section class="print-page" id="security">
@@ -435,7 +489,7 @@ vercel deploy</div>
       <h2>Useful access, narrow boundaries</h2>
       <p class="dek">The goal is not arbitrary control of the Mac. The goal is a small set of reliable actions with clear ownership and review.</p>
       <div class="decision"><b>Telegram</b><span>One numeric owner ID. Direct messages only. Groups disabled initially.</span></div>
-      <div class="decision"><b>Files</b><span>Codex workspace access is scoped to `~/PersonalOS/runtime`.</span></div>
+      <div class="decision"><b>Files</b><span>Codex setup access covers `~/Openclaw`. OpenClaw runtime execution stays scoped to `~/Openclaw/runtime`.</span></div>
       <div class="decision"><b>Commands</b><span>Host execution defaults to an allowlist and asks on a miss.</span></div>
       <div class="decision"><b>PIN</b><span>Supported app installation requires a short lived authorization. The PIN hash lives in Doppler.</span></div>
       <div class="decision"><b>Secrets</b><span>Tokens live in Doppler and enter the gateway process at runtime. Repositories contain placeholders only.</span></div>
@@ -448,7 +502,7 @@ vercel deploy</div>
         <label class="check"><input type="checkbox" data-check="security-backup"><span><strong>Obsidian Sync verified</strong>Open a test note on Mac and iPhone before trusting the vault with important work.</span></label>
       </div>
       <p class="small">References: <a href="https://docs.openclaw.ai/tools/exec-approvals">OpenClaw exec approvals</a>, <a href="https://docs.openclaw.ai/gateway/secrets">OpenClaw secrets management</a>.</p>
-      <span class="page-number">13</span>
+      <span class="page-number">15</span>
     </section>
 
     <section class="print-page" id="doctor">
@@ -470,18 +524,19 @@ vercel deploy</div>
         <label class="check"><input type="checkbox" data-check="doctor-deploy"><span><strong>GitHub to Vercel passes</strong>The nonsecret status page is live.</span></label>
       </div>
       <div class="callout callout-blue"><strong>Common fix:</strong> if QMD or OpenClaw reports a native module error, run `node -v`. It should show version 24, then reinstall QMD under that same runtime.</div>
-      <span class="page-number">14</span>
+      <span class="page-number">16</span>
     </section>
 
     <section class="print-page" id="master-prompt">
       <p class="eyebrow">Copy this into Remm's Codex</p>
       <h2>The master onboarding prompt</h2>
-      <p class="dek">Attach this guide and open the repository in Codex, then paste the prompt below. Codex should install safe local pieces and pause for human account steps.</p>
-      <pre class="prompt" id="prompt-text">Goal: complete my OpenClaw Personal OS setup on this Mac using this repository and the attached guide.
+      <p class="dek">Open `~/Openclaw` in Codex and paste the prompt below. Codex creates the two folders, clones the repository, installs safe local pieces, and pauses for human account steps.</p>
+      <pre class="prompt" id="prompt-text">Goal: complete my OpenClaw Personal OS setup on this Mac from a blank starting point.
 
 Success means:
+* My public system repository is located at ~/Openclaw/system.
+* My private runtime is located at ~/Openclaw/runtime.
 * Install the safe local tools and apps through setup.sh.
-* Keep the public system repository separate from my private runtime vault.
 * Guide me through paid ChatGPT with Codex, GitHub CLI, Vercel CLI, Doppler, Telegram BotFather, OpenClaw, Wispr Flow, Obsidian Sync, Granola, two Google calendars, and optional read only Gmail.
 * Configure Obsidian core plugins Bases, Daily Notes, Templates, and Sync.
 * Install and verify TaskNotes, Dataview, and Google Calendar. Keep Excalidraw optional and disabled initially.
@@ -493,14 +548,18 @@ Success means:
 * Build today's focused daily note and verify it on my iPhone through Obsidian Sync.
 * Install and verify Vault Recall with QMD under Node 24.
 * Create a private practice repository owned by me and deploy the nonsecret status page through Vercel.
-* Run personal-os doctor after each phase and fix every required check.
+* Run personal-os doctor after each phase and resolve every required FIX item.
 
-Stop when every required doctor check and the controlled task, calendar, Granola, recall, GitHub, and Vercel tests pass. Pause only when I must personally sign in, authorize an account, choose a paid plan, enter a PIN privately, or decide between materially different choices.
+Stop when: personal-os doctor reports that every required check passes and the controlled voice, task, calendar, Granola, recall, GitHub, and Vercel tests succeed.
 
-Start by reading README.md, DECISIONS.md, setup.sh, and this guide. Inspect the current Mac state before installing. Preserve existing files. Explain each human step in one short instruction, wait for me to finish it, verify it, and continue.</pre>
+Constraints: Preserve existing files. Keep private data in ~/Openclaw/runtime. Keep reusable public code in ~/Openclaw/system. Store secrets through Doppler. Use my own accounts and pause for every personal sign in, permission, private token, paid plan choice, PIN entry, or material decision.
+
+Create ~/Openclaw if it is missing. Clone https://github.com/CraftYourDesires/openclaw-personal-os into ~/Openclaw/system if that folder is missing. Read START-HERE.md, README.md, DECISIONS.md, setup.sh, and guide/index.html before installing.
+
+Run the safe setup steps yourself. Give me one short human instruction at a time. Wait for me to finish each sign in or permission screen, verify the result, then continue. Run personal-os doctor after each phase and use its first required FIX item as the next step.</pre>
       <button class="screen-only" id="copy-prompt" type="button">Copy master prompt</button>
       <div class="callout callout-mint"><strong>Done means verified.</strong> The doctor, controlled meeting, recall question, and status deployment prove the connections, not just the presence of installed apps.</div>
-      <span class="page-number">15</span>
+      <span class="page-number">17</span>
     </section>
 
     <section class="print-page" id="sources">
@@ -527,7 +586,7 @@ Start by reading README.md, DECISIONS.md, setup.sh, and this guide. Inspect the 
         <div class="card card-mint"><h3>The public template owns</h3><p>Only reusable setup code, empty vault structure, guide assets, tests, and nonsecret status page.</p></div>
       </div>
       <p class="footer-note">MIT licensed · CraftYourDesires/openclaw-personal-os</p>
-      <span class="page-number">16</span>
+      <span class="page-number">18</span>
     </section>
   </main>
 

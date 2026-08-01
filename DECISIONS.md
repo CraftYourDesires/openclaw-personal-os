@@ -13,7 +13,7 @@ Evidence:
 
 ## 2026-08-01: Keep the public repository separate from private runtime data
 
-Decision: Clone the public system into `~/PersonalOS/system` and keep the vault plus OpenClaw workspace under `~/PersonalOS/runtime`.
+Decision: Clone the public system into `~/Openclaw/system` and keep the vault plus OpenClaw workspace under `~/Openclaw/runtime`.
 
 Reason: This separation prevents normal Git operations from staging meeting transcripts, calendar data, tasks, and personal notes. It also lets Codex update the public system without mixing data ownership boundaries.
 

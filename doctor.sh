@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-RUNTIME_ROOT="${PERSONAL_OS_ROOT:-$HOME/PersonalOS/runtime}"
+RUNTIME_ROOT="${PERSONAL_OS_ROOT:-$HOME/Openclaw/runtime}"
 
 if [ -x "$RUNTIME_ROOT/bin/personal_os.py" ]; then
   exec "$RUNTIME_ROOT/bin/personal_os.py" doctor

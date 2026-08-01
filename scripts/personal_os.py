@@ -32,8 +32,9 @@ LONG = '-' * 2
 def load_config() -> dict:
     if CONFIG_PATH.exists():
         return json.loads(CONFIG_PATH.read_text(encoding='utf-8'))
-    runtime = Path(os.environ.get('PERSONAL_OS_ROOT', Path.home() / 'PersonalOS' / 'runtime'))
+    runtime = Path(os.environ.get('PERSONAL_OS_ROOT', Path.home() / 'Openclaw' / 'runtime'))
     return {
+        'system_root': str(Path.home() / 'Openclaw' / 'system'),
         'runtime_root': str(runtime),
         'vault': str(runtime / 'vault'),
         'workspace': str(runtime / 'workspace'),
@@ -147,6 +148,10 @@ def cmd_doctor(args, cfg: dict) -> int:
     del args
     vault = Path(cfg['vault']).expanduser()
     checks = []
+    system_root = Path(cfg.get('system_root', Path.home() / 'Openclaw' / 'system')).expanduser()
+    runtime_root = Path(cfg['runtime_root']).expanduser()
+    checks.append(doctor_check('System folder', system_root.exists(), str(system_root)))
+    checks.append(doctor_check('Private runtime folder', runtime_root.exists(), str(runtime_root)))
     required_bins = ['brew', 'node', 'python3', 'codex', 'openclaw', 'qmd', 'gh', 'vercel', 'doppler', 'gog']
     for binary in required_bins:
         path = shutil.which(binary)
