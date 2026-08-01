@@ -4,6 +4,8 @@ OpenClaw Personal OS is a guided Mac setup for a voice first personal assistant.
 
 The interactive guide is the canonical onboarding document. Open `guide/index.html` in a browser, or read the matching PDF in `guide/remm-openclaw-personal-os.pdf`.
 
+For an introductory conversation, use the landscape presenter PDF in `output/pdf/remm-personal-os-call-overview.pdf`. It explains the system map and follows the nine part call sequence before any installation begins.
+
 ## What it does
 
 * Dictate a request with Wispr Flow into a private Telegram bot.
@@ -82,5 +84,6 @@ This setup mixes work and personal information in one private vault. Confirm tha
 * `config/`: safe OpenClaw and launch service templates
 * `skills/`: core Codex and OpenClaw skills
 * `guide/`: interactive HTML and matching PDF
+* `output/pdf/`: short landscape presenter PDF for the introductory call
 * `status/`: first GitHub to Vercel deployment
 * `tests/`: automated verification

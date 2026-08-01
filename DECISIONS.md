@@ -108,3 +108,14 @@ Evidence:
 
 * https://www.launchd.info/
 * https://support.apple.com/guide/terminal/script-management-with-launchd-apdc6c107e0/mac
+
+## 2026-08-01: Use a landscape presenter PDF for the first conversation
+
+Decision: Give the introductory call its own landscape Letter PDF with one idea per page, large text, and a separate page for each of the nine discussion sections.
+
+Reason: The full setup guide is optimized for installation. A screen shared conversation needs larger type, lower information density, and a predictable speaking sequence. The presenter PDF points back to the same repository and does not create a second setup process.
+
+Evidence:
+
+* https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+* https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html
