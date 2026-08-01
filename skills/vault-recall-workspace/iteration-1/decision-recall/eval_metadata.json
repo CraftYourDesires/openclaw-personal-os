@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "decision-recall",
+  "prompt": "What did Jordan decide about the Acme launch date, and who owns the next step? Search the provided Personal OS meeting and cite the note that supports the answer.",
+  "assertions": [
+    "States that the final launch date is August 14",
+    "States that Jordan owns the launch checklist",
+    "Cites acme-launch-meeting.md and its date",
+    "Explains that the transcript overrides the conflicting draft summary"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "socket": {
+    "path": "__HOME__/.openclaw/exec-approvals.sock",
+    "token": "__EXEC_SOCKET_TOKEN__"
+  },
+  "defaults": {
+    "security": "allowlist",
+    "ask": "on-miss",
+    "askFallback": "deny",
+    "autoAllowSkills": false
+  },
+  "agents": {
+    "main": {
+      "security": "allowlist",
+      "ask": "on-miss",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": [
+        {
+          "pattern": "__RUNTIME_ROOT__/bin/personal_os.py *"
+        },
+        {
+          "pattern": "__HOME__/.local/bin/personal-os *"
+        },
+        {
+          "pattern": "/bin/date *"
+        }
+      ]
+    }
+  }
+}

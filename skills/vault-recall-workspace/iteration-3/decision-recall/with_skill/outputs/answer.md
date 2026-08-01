@@ -1,0 +1,1 @@
+Jordan decided the final Acme launch date is August 14, 2026. Jordan owns the launch checklist and will send the final version by August 11. The transcript corrects the draft summary from August 12 to August 14. It also corrects the checklist owner from Remm to Jordan. Source: `Acme launch planning`, July 31, 2026.

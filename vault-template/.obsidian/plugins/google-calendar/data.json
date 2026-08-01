@@ -1,0 +1,13 @@
+{
+  "useCustomClient": false,
+  "googleOAuthServer": "https://obsidian-google-calendar.vercel.app",
+  "refreshInterval": 20,
+  "useNotification": false,
+  "showNotice": true,
+  "autoCreateEventNotes": false,
+  "activateDailyNoteAddon": false,
+  "defaultCalendar": "",
+  "calendarBlackList": [],
+  "debugMode": false,
+  "usDateFormat": true
+}

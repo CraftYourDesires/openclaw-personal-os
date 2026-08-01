@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "The answer states that the final launch date is August 14, 2026.", "passed": true, "evidence": "The answer gives August 14, with the year available in the linked source."},
+    {"text": "The answer states that Jordan owns the launch checklist and will send it by August 11.", "passed": true, "evidence": "The answer gives ownership and the August 11 due date."},
+    {"text": "The answer explicitly says the transcript corrected the draft summary from August 12 to August 14.", "passed": false, "evidence": "The draft conflict is not mentioned."},
+    {"text": "The answer cites Acme launch planning and July 31, 2026.", "passed": false, "evidence": "The note title is linked, but the source date is absent from the answer."}
+  ],
+  "summary": {"passed": 2, "failed": 2, "total": 4, "pass_rate": 0.5},
+  "claims": [],
+  "eval_feedback": {"suggestions": [], "overall": "The assertions distinguish a correct conclusion from an evidence-aware answer."}
+}

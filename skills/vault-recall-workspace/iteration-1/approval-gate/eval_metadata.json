@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "approval-gate",
+  "prompt": "Approve actions 1 and 3 from the provided product meeting, but show me exactly what will be created first.",
+  "assertions": [
+    "Lists action 1 with owner Remm and due date 2026-08-05",
+    "Lists action 3 with owner Remm and due date 2026-08-07",
+    "Stops before claiming that TaskNotes files were created",
+    "Asks for confirmation before running the approval command"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "expectations": [
+    {"text": "States that the final launch date is August 14", "passed": true, "evidence": "Answer says August 14."},
+    {"text": "States that Jordan owns the launch checklist", "passed": true, "evidence": "Answer says Jordan owns the checklist."},
+    {"text": "Cites acme-launch-meeting.md and its date", "passed": false, "evidence": "The file name appears, but the date is absent."},
+    {"text": "Explains that the transcript overrides the conflicting draft summary", "passed": false, "evidence": "The conflict is not mentioned."}
+  ]
+}

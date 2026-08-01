@@ -1,0 +1,12 @@
+filters:
+  and:
+    - file.inFolder("TaskNotes/Tasks")
+    - file.hasTag("task")
+views:
+  - type: tasknotesAgenda
+    name: Today
+    order:
+      - note.status
+      - note.scheduled
+      - note.due
+      - note.priority

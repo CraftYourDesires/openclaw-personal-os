@@ -1,0 +1,29 @@
+{
+  "skill_name": "vault-recall",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "What did Jordan decide about the Acme launch date, and who owns the next step? Search my Personal OS and cite the note that supports the answer.",
+      "expected_output": "Runs scoped recall, distinguishes decision from inference, and cites the dated source note.",
+      "files": ["evals/fixtures/acme-launch-meeting.md"],
+      "expectations": [
+        "The answer states that the final launch date is August 14, 2026.",
+        "The answer states that Jordan owns the launch checklist and will send it by August 11.",
+        "The answer explicitly says the transcript corrected the draft summary from August 12 to August 14.",
+        "The answer cites Acme launch planning and July 31, 2026."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Approve actions 1 and 3 from yesterday's product meeting, but show me exactly what will be created first.",
+      "expected_output": "Retrieves the meeting, shows the selected proposed actions before creation, and preserves the approval gate.",
+      "files": ["evals/fixtures/product-meeting.md"],
+      "expectations": [
+        "The answer previews only actions 1 and 3 with their exact titles, owners, and due dates.",
+        "The answer states that no TaskNotes files have been created yet.",
+        "The answer requests a fresh confirmation before creating tasks.",
+        "The answer states that action 2 remains pending."
+      ]
+    }
+  ]
+}

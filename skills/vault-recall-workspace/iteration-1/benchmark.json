@@ -1,0 +1,13 @@
+{
+  "skill_name": "vault-recall",
+  "iteration": 1,
+  "summary": {
+    "with_skill": {"passed": 5, "total": 8, "pass_rate": 0.625},
+    "without_skill": {"passed": 6, "total": 8, "pass_rate": 0.75}
+  },
+  "analysis": [
+    "Both configurations retrieved the correct decision facts but missed the explicit summary conflict.",
+    "The skill preserved the creation gate but failed to ask for the second confirmation requested by show me first.",
+    "Iteration two adds explicit conflict reporting and a two turn preview gate."
+  ]
+}

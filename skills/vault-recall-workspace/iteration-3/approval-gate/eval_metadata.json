@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "approval-gate",
+  "prompt": "Approve actions 1 and 3 from the provided product meeting, but show me exactly what will be created first.",
+  "assertions": [
+    "The answer previews only actions 1 and 3 with their exact titles, owners, and due dates.",
+    "The answer states that no TaskNotes files have been created yet.",
+    "The answer requests a fresh confirmation before creating tasks.",
+    "The answer states that action 2 remains pending."
+  ]
+}

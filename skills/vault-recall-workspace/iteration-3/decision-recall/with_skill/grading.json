@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "The answer states that the final launch date is August 14, 2026.", "passed": true, "evidence": "The opening sentence gives August 14, 2026."},
+    {"text": "The answer states that Jordan owns the launch checklist and will send it by August 11.", "passed": true, "evidence": "The second sentence gives both ownership and due date."},
+    {"text": "The answer explicitly says the transcript corrected the draft summary from August 12 to August 14.", "passed": true, "evidence": "The correction is stated explicitly with both dates."},
+    {"text": "The answer cites Acme launch planning and July 31, 2026.", "passed": true, "evidence": "The final source clause gives the note title and date."}
+  ],
+  "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0},
+  "claims": [],
+  "eval_feedback": {"suggestions": [], "overall": "The assertions distinguish factual recall, conflict handling, and citation quality."}
+}

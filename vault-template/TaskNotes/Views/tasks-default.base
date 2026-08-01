@@ -1,0 +1,16 @@
+filters:
+  and:
+    - file.inFolder("TaskNotes/Tasks")
+    - file.hasTag("task")
+views:
+  - type: tasknotesTaskList
+    name: Open tasks
+    sort:
+      - column: scheduled
+        direction: ASC
+    order:
+      - note.status
+      - note.priority
+      - note.scheduled
+      - note.due
+      - note.owner

@@ -1,0 +1,8 @@
+{
+  "expectations": [
+    {"text": "Lists action 1 with owner Remm and due date 2026-08-05", "passed": true, "evidence": "The first task and due date are previewed."},
+    {"text": "Lists action 3 with owner Remm and due date 2026-08-07", "passed": true, "evidence": "The third task and due date are previewed."},
+    {"text": "Stops before claiming that TaskNotes files were created", "passed": true, "evidence": "The answer opens with nothing has been created yet."},
+    {"text": "Asks for confirmation before running the approval command", "passed": false, "evidence": "The answer does not request confirmation."}
+  ]
+}

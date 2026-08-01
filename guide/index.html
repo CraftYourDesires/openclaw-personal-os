@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A beginner friendly setup guide for Remm's OpenClaw Personal OS.">
+  <title>Remm's OpenClaw Personal OS</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: #12263a; background: #edf3f7; font-family: "Avenir Next", Avenir, Helvetica, Arial, sans-serif; line-height: 1.55; }
+    a { color: #176ea8; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: #0d4f7d; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .toolbar { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 16px; padding: 12px 24px; background: rgba(18, 38, 58, 0.96); color: white; box-shadow: 0 8px 26px rgba(18, 38, 58, 0.16); }
+    .toolbar-title { font-weight: 700; letter-spacing: 0.02em; }
+    .toolbar-progress { margin-left: auto; font-family: "SFMono-Regular", Consolas, monospace; font-size: 13px; }
+    .toolbar button { border: 1px solid rgba(255,255,255,0.45); border-radius: 999px; padding: 7px 13px; background: transparent; color: white; }
+    .toolbar button:hover, .toolbar button:focus-visible { background: white; color: #12263a; }
+    .chapters { max-width: 1020px; margin: 0 auto; padding: 30px 18px 80px; }
+    .print-page { position: relative; overflow: hidden; min-height: 760px; margin: 24px 0; padding: 52px 58px; background: #f8fafc; border: 1px solid #d7e1e8; border-radius: 28px; box-shadow: 0 22px 65px rgba(18, 38, 58, 0.10); }
+    .page-number { position: absolute; right: 34px; bottom: 24px; color: #7b8b98; font: 12px "SFMono-Regular", Consolas, monospace; letter-spacing: 0.1em; }
+    .eyebrow { margin: 0 0 12px; color: #176ea8; font: 700 12px "SFMono-Regular", Consolas, monospace; letter-spacing: 0.14em; text-transform: uppercase; }
+    h1, h2, h3 { margin: 0; line-height: 1.08; }
+    h1, h2 { font-family: "Iowan Old Style", Georgia, serif; font-weight: 700; letter-spacing: -0.025em; }
+    h1 { max-width: 760px; font-size: clamp(48px, 8vw, 80px); }
+    h2 { max-width: 760px; font-size: clamp(36px, 5vw, 56px); }
+    h3 { margin-top: 26px; font-size: 19px; }
+    .dek { max-width: 700px; margin: 20px 0 30px; color: #526574; font-size: 20px; }
+    .small { color: #667987; font-size: 13px; }
+    .hero { display: grid; grid-template-columns: 1.06fr 0.94fr; align-items: center; gap: 34px; background: #f8fafc; }
+    .hero-image { width: 100%; border-radius: 22px; box-shadow: 0 18px 44px rgba(18, 38, 58, 0.16); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 13px; border-radius: 999px; background: #e1f3eb; color: #1d684a; font-size: 13px; font-weight: 700; }
+    .hero-badge span { width: 9px; height: 9px; border-radius: 50%; background: #49a979; box-shadow: 0 0 0 5px rgba(73,169,121,0.14); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin-top: 26px; }
+    .card { padding: 21px; border: 1px solid #d9e4ea; border-radius: 18px; background: white; }
+    .card h3 { margin-top: 0; }
+    .card p:last-child { margin-bottom: 0; }
+    .card-coral { border-top: 5px solid #ff7a59; }
+    .card-blue { border-top: 5px solid #4b9fe1; }
+    .card-mint { border-top: 5px solid #78c6a3; }
+    .number { display: inline-grid; place-items: center; width: 35px; height: 35px; margin-bottom: 14px; border-radius: 10px; background: #12263a; color: white; font: 700 13px "SFMono-Regular", Consolas, monospace; }
+    .checklist { display: grid; gap: 10px; margin-top: 22px; }
+    .check { display: grid; grid-template-columns: 24px 1fr; gap: 11px; align-items: start; padding: 12px 14px; border: 1px solid #d7e2e8; border-radius: 12px; background: white; }
+    .check:hover { border-color: #83bce3; }
+    .check input { width: 18px; height: 18px; margin-top: 3px; accent-color: #176ea8; }
+    .check strong { display: block; }
+    .callout { margin: 24px 0; padding: 19px 22px; border-left: 5px solid #ff7a59; border-radius: 0 15px 15px 0; background: #fff2ed; }
+    .callout-blue { border-left-color: #4b9fe1; background: #eaf5fc; }
+    .callout-mint { border-left-color: #78c6a3; background: #edf8f3; }
+    .command { overflow-x: auto; margin: 15px 0; padding: 14px 16px; border-radius: 12px; background: #12263a; color: #e9f5ff; font: 13px/1.6 "SFMono-Regular", Consolas, monospace; white-space: pre-wrap; }
+    .phase-tag { display: inline-block; margin-bottom: 18px; padding: 7px 11px; border-radius: 7px; background: #12263a; color: white; font: 700 12px "SFMono-Regular", Consolas, monospace; letter-spacing: 0.08em; }
+    .diagram-wrap { margin-top: 22px; padding: 22px; border-radius: 22px; background: #12263a; }
+    .diagram { display: block; width: 100%; height: auto; }
+    .diagram-node { transition: transform 180ms ease, filter 180ms ease; transform-origin: center; }
+    .diagram-node:hover { transform: scale(1.025); filter: brightness(1.06); }
+    .signal { stroke-dasharray: 12 9; animation: signalFlow 3s linear infinite; }
+    @keyframes signalFlow { to { stroke-dashoffset: -42; } }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; align-items: center; margin-top: 28px; }
+    .flow-step { min-height: 120px; padding: 15px; border-radius: 15px; background: white; border: 1px solid #d9e4ea; text-align: center; }
+    .flow-step b { display: block; margin-bottom: 8px; color: #176ea8; font-family: "SFMono-Regular", Consolas, monospace; }
+    .flow-arrow { color: #ff7a59; font-size: 30px; text-align: center; }
+    .plugin-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+    .plugin { display: flex; align-items: center; gap: 13px; padding: 15px; border: 1px solid #d8e3e9; border-radius: 13px; background: white; }
+    .plugin-icon { display: grid; place-items: center; flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #eaf5fc; color: #176ea8; font-weight: 800; }
+    .optional { opacity: 0.68; }
+    .decision { display: grid; grid-template-columns: 130px 1fr; gap: 20px; padding: 19px 0; border-bottom: 1px solid #d7e2e8; }
+    .decision:last-child { border-bottom: 0; }
+    .decision b { color: #176ea8; }
+    .prompt { max-height: 430px; overflow: auto; padding: 22px; border-radius: 18px; background: #12263a; color: #f4f8fb; font: 12px/1.65 "SFMono-Regular", Consolas, monospace; white-space: pre-wrap; }
+    .source-list { columns: 2; column-gap: 35px; margin-top: 24px; }
+    .source-list li { break-inside: avoid; margin-bottom: 9px; }
+    .footer-note { position: absolute; left: 58px; bottom: 24px; color: #7b8b98; font-size: 11px; }
+    .screen-only { display: initial; }
+    @media (max-width: 760px) {
+      .toolbar { flex-wrap: wrap; padding: 10px 14px; }
+      .toolbar-progress { margin-left: 0; width: 100%; order: 3; }
+      .chapters { padding: 10px; }
+      .print-page { min-height: auto; padding: 34px 24px 64px; border-radius: 18px; }
+      .hero, .grid-2, .grid-3, .plugin-list { grid-template-columns: 1fr; }
+      .hero-image { margin-top: 10px; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-arrow { transform: rotate(90deg); }
+      .source-list { columns: 1; }
+      .decision { grid-template-columns: 1fr; gap: 4px; }
+      .page-number { right: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .signal { animation: none; }
+      .diagram-node { transition: none; }
+    }
+    @page { size: Letter; margin: 0; }
+    @media print {
+      body { background: white; line-height: 1.35; print-color-adjust: exact; }
+      .toolbar, .screen-only { display: none; }
+      .chapters { max-width: none; padding: 0; }
+      .print-page { width: 8.5in; height: 11in; min-height: 11in; margin: 0; padding: 0.44in 0.54in 0.48in; border: 0; border-radius: 0; box-shadow: none; page-break-after: always; break-after: page; }
+      .print-page:last-child { page-break-after: auto; }
+      h1 { font-size: 54px; }
+      h2 { font-size: 34px; }
+      h3 { margin-top: 14px; font-size: 16px; }
+      .dek { margin: 12px 0 16px; font-size: 15px; }
+      .phase-tag { margin-bottom: 11px; padding: 5px 9px; }
+      .grid-2, .grid-3 { gap: 10px; margin-top: 14px; }
+      .card { padding: 14px; font-size: 12.5px; }
+      .card { break-inside: avoid; }
+      .number { width: 29px; height: 29px; margin-bottom: 8px; }
+      .checklist { gap: 6px; margin-top: 12px; }
+      .check { grid-template-columns: 20px 1fr; gap: 8px; padding: 8px 10px; font-size: 12.5px; line-height: 1.28; }
+      .check input { width: 15px; height: 15px; }
+      .callout { margin: 12px 0; padding: 12px 15px; font-size: 12.5px; }
+      .command { margin: 9px 0; padding: 9px 12px; font-size: 11px; }
+      .flow { gap: 8px; margin-top: 14px; }
+      .flow-step { min-height: 80px; padding: 9px; font-size: 12px; }
+      .flow-arrow { font-size: 24px; }
+      .plugin-list { gap: 8px; margin-top: 12px; }
+      .plugin { padding: 9px; font-size: 12px; }
+      .plugin-icon { width: 32px; height: 32px; }
+      .decision { gap: 14px; padding: 10px 0; font-size: 12.5px; }
+      .small { font-size: 10.5px; }
+      .prompt { max-height: none; font-size: 9.2px; line-height: 1.45; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { max-height: 4.55in; object-fit: cover; }
+      a { color: #176ea8; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="toolbar screen-only" aria-label="Guide controls">
+    <span class="toolbar-title">Remm's Personal OS</span>
+    <button id="print-guide" type="button">Save as PDF</button>
+    <button id="reset-guide" type="button">Reset checklist</button>
+    <span class="toolbar-progress" id="progress">0 of 0 complete</span>
+  </nav>
+
+  <main class="chapters">
+    <section class="print-page hero" id="cover">
+      <div>
+        <p class="eyebrow">A calm command center for work and life</p>
+        <h1>Remm's OpenClaw Personal OS</h1>
+        <p class="dek">Speak naturally. Capture the right tasks. See today's plan. Remember every useful meeting. Build projects with Codex when inspiration hits.</p>
+        <div class="hero-badge"><span></span>Designed for a personal MacBook and iPhone</div>
+        <p class="small">Version 1.0 · August 2026 · HTML is the canonical guide</p>
+      </div>
+      <div>
+        <img class="hero-image" src="assets/personal-os-command-center.png" alt="Illustration of a person using a laptop and phone while voice, notes, calendar, meetings, and code connect through a private assistant.">
+      </div>
+      <span class="page-number">01</span>
+    </section>
+
+    <section class="print-page" id="map">
+      <p class="eyebrow">The whole system on one page</p>
+      <h2>Your voice becomes organized action</h2>
+      <p class="dek">Wispr Flow helps you speak. Telegram gives you one private doorway. OpenClaw routes the request. Obsidian holds the durable record. Codex handles the reasoning.</p>
+      <div class="diagram-wrap">
+        <svg class="diagram" viewBox="0 0 900 500" role="img" aria-labelledby="diagram-title diagram-desc">
+          <title id="diagram-title">OpenClaw Personal OS connection map</title>
+          <desc id="diagram-desc">Wispr Flow sends dictated text into Telegram. Telegram connects to OpenClaw and Codex. OpenClaw routes actions to Obsidian, Google Calendar, Apple Reminders, Granola, GitHub, and Vercel.</desc>
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="#ff7a59"></path>
+            </marker>
+          </defs>
+          <path class="signal" d="M150 145 C250 145 260 250 360 250" fill="none" stroke="#ff7a59" stroke-width="6" marker-end="url(#arrow)"></path>
+          <path class="signal" d="M520 250 C620 250 620 100 720 100" fill="none" stroke="#78c6a3" stroke-width="5" marker-end="url(#arrow)"></path>
+          <path class="signal" d="M520 250 C640 250 630 205 735 205" fill="none" stroke="#4b9fe1" stroke-width="5" marker-end="url(#arrow)"></path>
+          <path class="signal" d="M520 250 C640 250 630 310 735 310" fill="none" stroke="#ff7a59" stroke-width="5" marker-end="url(#arrow)"></path>
+          <path class="signal" d="M520 250 C620 250 620 415 720 415" fill="none" stroke="#78c6a3" stroke-width="5" marker-end="url(#arrow)"></path>
+          <g class="diagram-node">
+            <rect x="30" y="95" width="120" height="100" rx="24" fill="#ff7a59"></rect>
+            <text x="90" y="137" text-anchor="middle" fill="white" font-size="16" font-weight="700">Wispr Flow</text>
+            <text x="90" y="165" text-anchor="middle" fill="white" font-size="12">Speak</text>
+          </g>
+          <g class="diagram-node">
+            <rect x="190" y="200" width="130" height="100" rx="24" fill="#4b9fe1"></rect>
+            <text x="255" y="242" text-anchor="middle" fill="white" font-size="17" font-weight="700">Telegram</text>
+            <text x="255" y="270" text-anchor="middle" fill="white" font-size="12">Private doorway</text>
+          </g>
+          <g class="diagram-node">
+            <rect x="360" y="180" width="160" height="140" rx="30" fill="#f8fafc" stroke="#78c6a3" stroke-width="5"></rect>
+            <text x="440" y="232" text-anchor="middle" fill="#12263a" font-size="21" font-weight="800">OpenClaw</text>
+            <text x="440" y="261" text-anchor="middle" fill="#176ea8" font-size="15" font-weight="700">with Codex</text>
+            <text x="440" y="289" text-anchor="middle" fill="#526574" font-size="12">Route and reason</text>
+          </g>
+          <g class="diagram-node">
+            <rect x="720" y="55" width="145" height="90" rx="22" fill="#78c6a3"></rect>
+            <text x="792" y="94" text-anchor="middle" fill="#12263a" font-size="16" font-weight="800">Obsidian</text>
+            <text x="792" y="119" text-anchor="middle" fill="#12263a" font-size="12">Daily OS</text>
+          </g>
+          <g class="diagram-node">
+            <rect x="735" y="160" width="145" height="90" rx="22" fill="#4b9fe1"></rect>
+            <text x="807" y="199" text-anchor="middle" fill="white" font-size="15" font-weight="800">Calendars</text>
+            <text x="807" y="224" text-anchor="middle" fill="white" font-size="12">Work + personal</text>
+          </g>
+          <g class="diagram-node">
+            <rect x="735" y="265" width="145" height="90" rx="22" fill="#ff7a59"></rect>
+            <text x="807" y="304" text-anchor="middle" fill="white" font-size="16" font-weight="800">Granola</text>
+            <text x="807" y="329" text-anchor="middle" fill="white" font-size="12">Meetings</text>
+          </g>
+          <g class="diagram-node">
+            <rect x="720" y="370" width="145" height="90" rx="22" fill="#78c6a3"></rect>
+            <text x="792" y="409" text-anchor="middle" fill="#12263a" font-size="15" font-weight="800">GitHub + Vercel</text>
+            <text x="792" y="434" text-anchor="middle" fill="#12263a" font-size="12">Build and publish</text>
+          </g>
+        </svg>
+      </div>
+      <div class="callout callout-mint"><strong>One owner, one vault, one private bot.</strong> The public system code stays separate from the private runtime data.</div>
+      <span class="page-number">02</span>
+    </section>
+
+    <section class="print-page" id="before-starting">
+      <p class="eyebrow">Before starting</p>
+      <h2>What you need</h2>
+      <p class="dek">Set aside 60 to 90 minutes. Most of the time is account sign in and permission screens. Codex handles the safe local installation.</p>
+      <div class="grid-3">
+        <div class="card card-blue"><span class="number">1</span><h3>Hardware</h3><p>Personal MacBook, iPhone, internet connection, and administrator password.</p></div>
+        <div class="card card-coral"><span class="number">2</span><h3>Accounts</h3><p>Paid ChatGPT, GitHub, Vercel, Doppler, Google, Telegram, Granola, Wispr Flow, and Obsidian Sync.</p></div>
+        <div class="card card-mint"><span class="number">3</span><h3>Time</h3><p>Three short phases. Stop after any phase and resume later by running the doctor.</p></div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="prep-mac"><span><strong>MacBook is plugged in</strong>Keep it awake during setup and the first sync.</span></label>
+        <label class="check"><input type="checkbox" data-check="prep-chatgpt"><span><strong>Paid ChatGPT account is ready</strong>Codex and OpenClaw use the subscription sign in.</span></label>
+        <label class="check"><input type="checkbox" data-check="prep-google"><span><strong>Google accounts are known</strong>Have personal and work addresses ready. Work can wait if company OAuth blocks access.</span></label>
+        <label class="check"><input type="checkbox" data-check="prep-policy"><span><strong>Privacy notice reviewed</strong>Meeting recording and full transcript retention must fit employer policy and local law.</span></label>
+      </div>
+      <div class="callout"><strong>Version one works while the Mac is awake.</strong> A server or always on Mac can come later if you want twenty four hour availability.</div>
+      <span class="page-number">03</span>
+    </section>
+
+    <section class="print-page" id="phase-one-tools">
+      <span class="phase-tag">Phase 1 · Accounts and voice</span>
+      <h2>Install the agentic toolkit</h2>
+      <p class="dek">Codex runs the installer. It pins Node 24 so OpenClaw and QMD share one supported runtime.</p>
+      <div class="command">bash setup.sh</div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Command line tools</h3>
+          <p>GitHub CLI, Vercel CLI, Codex CLI, OpenClaw, QMD, Doppler, Google Workspace CLI, Python, and Poppler.</p>
+        </div>
+        <div class="card">
+          <h3>Mac apps</h3>
+          <p>Obsidian, Granola, and Wispr Flow. Open each app once after installation so macOS can request permissions.</p>
+        </div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="tools-setup"><span><strong>Installer completed</strong>It is safe to run the installer again. Personal vault files are preserved.</span></label>
+        <label class="check"><input type="checkbox" data-check="tools-codex"><span><strong>Codex CLI signed in</strong>Run `codex login` and use the same paid ChatGPT account.</span></label>
+        <label class="check"><input type="checkbox" data-check="tools-github"><span><strong>GitHub CLI signed in</strong>Run `gh auth login`, choose GitHub.com, HTTPS, and browser sign in.</span></label>
+        <label class="check"><input type="checkbox" data-check="tools-vercel"><span><strong>Vercel CLI signed in</strong>Run `vercel login` and use the account that will own Remm's deployments.</span></label>
+        <label class="check"><input type="checkbox" data-check="tools-doppler"><span><strong>Doppler signed in</strong>Create the `openclaw-personal-os` project with a `dev` config.</span></label>
+      </div>
+      <p class="small">References: <a href="https://docs.openclaw.ai/install/node">OpenClaw Node guide</a>, <a href="https://cli.github.com/">GitHub CLI</a>, <a href="https://vercel.com/docs/cli">Vercel CLI</a>.</p>
+      <span class="page-number">04</span>
+    </section>
+
+    <section class="print-page" id="telegram">
+      <span class="phase-tag">Phase 1 · Private doorway</span>
+      <h2>Create the Telegram bot</h2>
+      <p class="dek">Telegram is the single place Remm talks to OpenClaw. The bot accepts direct messages only from Remm's numeric Telegram user ID.</p>
+      <div class="flow">
+        <div class="flow-step"><b>1</b>Open the verified <strong>@BotFather</strong> account.</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><b>2</b>Send <strong>/newbot</strong> and choose a name.</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><b>3</b>Save the token in Doppler, then pair the first DM.</div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="telegram-bot"><span><strong>Bot created with @BotFather</strong>Confirm the username is exactly @BotFather before sharing a token.</span></label>
+        <label class="check"><input type="checkbox" data-check="telegram-secret"><span><strong>Token stored in Doppler</strong>Secret name: `TELEGRAM_BOT_TOKEN`. Never paste it into the repository.</span></label>
+        <label class="check"><input type="checkbox" data-check="telegram-owner"><span><strong>Numeric owner ID stored</strong>Config name: `TELEGRAM_USER_ID`. This is the only accepted sender.</span></label>
+        <label class="check"><input type="checkbox" data-check="telegram-test"><span><strong>Private DM tested</strong>Send “Create a test task for today” and verify one TaskNotes file appears.</span></label>
+      </div>
+      <div class="callout callout-blue"><strong>Keep groups disabled initially.</strong> Private DMs are easier to reason about and reduce accidental access.</div>
+      <p class="small">Reference: <a href="https://docs.openclaw.ai/channels/telegram">OpenClaw Telegram setup</a>.</p>
+      <span class="page-number">05</span>
+    </section>
+
+    <section class="print-page" id="wispr">
+      <span class="phase-tag">Phase 1 · Speak naturally</span>
+      <h2>Set up Wispr Flow</h2>
+      <p class="dek">Wispr Flow turns speech into polished text inside Telegram. It does not replace OpenClaw. It makes the private chat fast enough to feel conversational.</p>
+      <div class="grid-2">
+        <div class="card card-blue"><h3>Privacy Mode</h3><p>Choose this when Remm wants less surrounding app context shared with Wispr. It can require slightly more explicit dictation.</p></div>
+        <div class="card card-mint"><h3>Context Awareness</h3><p>Choose this when Remm values better app specific corrections and is comfortable with the added context.</p></div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="wispr-login"><span><strong>Wispr Flow signed in</strong>Grant microphone and accessibility permissions when macOS asks.</span></label>
+        <label class="check"><input type="checkbox" data-check="wispr-choice"><span><strong>Privacy choice recorded</strong>Pick Privacy Mode or Context Awareness during onboarding.</span></label>
+        <label class="check"><input type="checkbox" data-check="wispr-shortcut"><span><strong>Dictation shortcut practiced</strong>Open the Telegram bot, hold the Wispr shortcut, speak, release, and review the text.</span></label>
+        <label class="check"><input type="checkbox" data-check="wispr-action"><span><strong>Real request tested</strong>Say: “Remind me every Wednesday at nine to prepare the weekly update.”</span></label>
+      </div>
+      <div class="callout"><strong>Speak the outcome and the timing.</strong> Repeating requests become TaskNotes recurrence rules, so “every Wednesday at nine” keeps advancing after each completion.</div>
+      <p class="small">Reference: <a href="https://docs.wisprflow.ai/articles/3152211871-setup-guide">Wispr Flow setup guide</a>.</p>
+      <span class="page-number">06</span>
+    </section>
+
+    <section class="print-page" id="obsidian">
+      <span class="phase-tag">Phase 2 · Daily operating system</span>
+      <h2>Open the Obsidian vault</h2>
+      <p class="dek">The installer creates `~/PersonalOS/runtime/vault`. Open that folder as an Obsidian vault, then connect it to Obsidian Sync.</p>
+      <div class="plugin-list">
+        <div class="plugin"><span class="plugin-icon">B</span><span><strong>Bases</strong><br><span class="small">Required core plugin for TaskNotes views</span></span></div>
+        <div class="plugin"><span class="plugin-icon">D</span><span><strong>Daily Notes</strong><br><span class="small">Opens the current day</span></span></div>
+        <div class="plugin"><span class="plugin-icon">T</span><span><strong>Templates</strong><br><span class="small">Provides the daily note fallback</span></span></div>
+        <div class="plugin"><span class="plugin-icon">S</span><span><strong>Sync</strong><br><span class="small">Official paid Mac and iPhone sync</span></span></div>
+        <div class="plugin"><span class="plugin-icon">TN</span><span><strong>TaskNotes</strong><br><span class="small">One Markdown note per task</span></span></div>
+        <div class="plugin"><span class="plugin-icon">DV</span><span><strong>Dataview</strong><br><span class="small">Useful flexible vault queries</span></span></div>
+        <div class="plugin"><span class="plugin-icon">GC</span><span><strong>Google Calendar</strong><br><span class="small">Calendar views inside Obsidian</span></span></div>
+        <div class="plugin optional"><span class="plugin-icon">EX</span><span><strong>Excalidraw</strong><br><span class="small">Optional and disabled initially</span></span></div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="obsidian-vault"><span><strong>Vault opened</strong>Choose “Open folder as vault” and select `~/PersonalOS/runtime/vault`.</span></label>
+        <label class="check"><input type="checkbox" data-check="obsidian-trust"><span><strong>Community plugins trusted</strong>Review the listed plugins, then enable community plugins.</span></label>
+        <label class="check"><input type="checkbox" data-check="obsidian-sync"><span><strong>Obsidian Sync connected</strong>Create or select a private remote vault, then connect the iPhone.</span></label>
+        <label class="check"><input type="checkbox" data-check="obsidian-task"><span><strong>Test task appears</strong>Create one TaskNotes task and confirm its file is in `TaskNotes/Tasks`.</span></label>
+      </div>
+      <p class="small">References: <a href="https://obsidian.md/help/sync/setup">Obsidian Sync setup</a>, <a href="https://tasknotes.dev/">TaskNotes requirements</a>.</p>
+      <span class="page-number">07</span>
+    </section>
+
+    <section class="print-page" id="calendars">
+      <span class="phase-tag">Phase 2 · Calendars and optional email</span>
+      <h2>Connect both calendars</h2>
+      <p class="dek">The Google Workspace CLI gives OpenClaw scoped calendar access. The Obsidian calendar plugin gives Remm a visual calendar inside the vault.</p>
+      <div class="decision"><b>Personal</b><span>Connect first. It counts as a successful setup even if work access is blocked.</span></div>
+      <div class="decision"><b>Work</b><span>Connect second. If company OAuth blocks access, leave it pending and continue.</span></div>
+      <div class="decision"><b>New events</b><span>Infer personal or work from context. Ask only when the destination is genuinely ambiguous.</span></div>
+      <div class="decision"><b>Gmail</b><span>Optional and read only. Search and summarize only. Sending stays disabled in version one.</span></div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="calendar-oauth"><span><strong>Google OAuth app created</strong>Choose Desktop app in Google Cloud. Store the client ID and secret in Doppler, then run `personal-os google-credentials`.</span></label>
+        <label class="check"><input type="checkbox" data-check="calendar-personal"><span><strong>Personal calendar connected</strong>Run `personal-os google-auth personal EMAIL`. The browser asks for consent and the account is saved automatically.</span></label>
+        <label class="check"><input type="checkbox" data-check="calendar-work"><span><strong>Work calendar connected or marked pending</strong>Do not block the system when company policy prevents OAuth.</span></label>
+        <label class="check"><input type="checkbox" data-check="calendar-test"><span><strong>Calendar routing tested</strong>Create one personal test event, then one work event if available.</span></label>
+        <label class="check"><input type="checkbox" data-check="gmail-choice"><span><strong>Optional Gmail choice recorded</strong>If enabled, grant read only scopes and test one search.</span></label>
+      </div>
+      <span class="page-number">08</span>
+    </section>
+
+    <section class="print-page" id="daily-note">
+      <span class="phase-tag">Phase 2 · Today only</span>
+      <h2>Your daily note is the home screen</h2>
+      <p class="dek">Every morning, one focused note shows what matters today. It does not become a giant backlog.</p>
+      <div class="grid-2">
+        <div class="card card-blue"><h3>Today at a glance</h3><p>Work and personal events appear with source labels.</p></div>
+        <div class="card card-coral"><h3>Due tasks</h3><p>Only open tasks scheduled or due today.</p></div>
+        <div class="card card-mint"><h3>Granola review</h3><p>Meetings with proposed actions waiting for approval.</p></div>
+        <div class="card"><h3>Reminders and notes</h3><p>A short scratch space for today's reminders and thinking.</p></div>
+      </div>
+      <div class="command">personal-os daily</div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="daily-generate"><span><strong>Today's note generated</strong>Confirm the file exists in `Daily` with today's date.</span></label>
+        <label class="check"><input type="checkbox" data-check="daily-events"><span><strong>Calendar labels are correct</strong>Personal and Work appear beside the right events.</span></label>
+        <label class="check"><input type="checkbox" data-check="daily-tasks"><span><strong>Due task appears</strong>Create a task due today and refresh the note.</span></label>
+        <label class="check"><input type="checkbox" data-check="daily-iphone"><span><strong>Note reaches iPhone</strong>Open Obsidian on iPhone and verify the same note through Sync.</span></label>
+      </div>
+      <div class="callout callout-mint"><strong>Rule of thumb:</strong> the daily note tells you what deserves attention today. TaskNotes and Vault Recall hold everything else.</div>
+      <span class="page-number">09</span>
+    </section>
+
+    <section class="print-page" id="granola">
+      <span class="phase-tag">Phase 3 · Meetings and memory</span>
+      <h2>Granola captures. Codex proposes. Remm approves.</h2>
+      <p class="dek">The signed in Granola desktop session supplies meeting notes and full transcripts. Codex creates a review packet, not automatic commitments.</p>
+      <div class="flow">
+        <div class="flow-step"><b>1</b>Granola records the meeting.</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><b>2</b>The hourly sync writes the full transcript.</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><b>3</b>Codex proposes actions and decisions.</div>
+      </div>
+      <div class="grid-2">
+        <div class="card card-coral"><h3>Review state</h3><p>Proposed actions remain checkboxes in the meeting note. They appear in the daily note.</p></div>
+        <div class="card card-mint"><h3>Approved state</h3><p>Only selected action numbers become TaskNotes files. Unselected actions remain visible.</p></div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="granola-login"><span><strong>Granola signed in</strong>Open the desktop app and finish its account setup.</span></label>
+        <label class="check"><input type="checkbox" data-check="granola-meeting"><span><strong>Controlled meeting recorded</strong>Use a short test meeting with one decision and three action items.</span></label>
+        <label class="check"><input type="checkbox" data-check="granola-import"><span><strong>Full transcript imported</strong>Verify the meeting note contains the complete Transcript section.</span></label>
+        <label class="check"><input type="checkbox" data-check="granola-review"><span><strong>Review packet created</strong>Confirm summary, proposed actions, decisions, topics, and status review.</span></label>
+        <label class="check"><input type="checkbox" data-check="granola-approve"><span><strong>Selected actions approved</strong>Approve actions 1 and 3. Confirm two task files and one remaining proposal.</span></label>
+      </div>
+      <div class="callout"><strong>Durability note:</strong> the local Granola desktop authentication method is convenient and free, but an app update can change it. The setup doctor reports this failure clearly.</div>
+      <p class="small">References: <a href="https://docs.granola.ai/help-center/taking-notes/transcription">Granola transcription</a>, <a href="https://docs.granola.ai/help-center/sharing/exporting-notes">Granola export options</a>.</p>
+      <span class="page-number">10</span>
+    </section>
+
+    <section class="print-page" id="recall">
+      <span class="phase-tag">Phase 3 · Vault Recall</span>
+      <h2>Ask your history a normal question</h2>
+      <p class="dek">Vault Recall searches notes, TaskNotes, meeting transcripts, and OpenClaw memory. QMD runs locally and Codex synthesizes the retrieved evidence.</p>
+      <div class="grid-2">
+        <div class="card"><h3>Decision recall</h3><p>“What did Jordan decide about the launch date?”</p></div>
+        <div class="card"><h3>Open loops</h3><p>“What am I waiting on from the product team?”</p></div>
+        <div class="card"><h3>Person recall</h3><p>“What has Alex said about the new workflow?”</p></div>
+        <div class="card"><h3>Date recall</h3><p>“What happened in meetings last Thursday?”</p></div>
+      </div>
+      <div class="command">personal-os index
+personal-os recall "launch decision and checklist owner" 8</div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="recall-index"><span><strong>QMD collection indexed</strong>The `personal-os` collection appears in QMD status.</span></label>
+        <label class="check"><input type="checkbox" data-check="recall-meeting"><span><strong>Meeting answer cites evidence</strong>Ask about the controlled meeting and verify the note name and date.</span></label>
+        <label class="check"><input type="checkbox" data-check="recall-conflict"><span><strong>Transcript wins conflicts</strong>A conflicting draft summary must be corrected with transcript evidence.</span></label>
+        <label class="check"><input type="checkbox" data-check="recall-empty"><span><strong>Missing evidence is honest</strong>Ask about a made up project and verify the answer says it was not found.</span></label>
+      </div>
+      <p class="small">Reference: <a href="https://github.com/tobi/qmd">QMD project</a>.</p>
+      <span class="page-number">11</span>
+    </section>
+
+    <section class="print-page" id="github-vercel">
+      <span class="phase-tag">Phase 3 · Build and publish</span>
+      <h2>GitHub and Vercel become normal tools</h2>
+      <p class="dek">GitHub CLI lets Codex create repositories, branches, commits, and pull requests. Vercel CLI lets Codex link and deploy web projects from the terminal.</p>
+      <div class="grid-2">
+        <div class="card card-blue"><span class="number">1</span><h3>Own the accounts</h3><p>Remm signs in to GitHub and Vercel. Projects belong to Remm, not to the template author.</p></div>
+        <div class="card card-coral"><span class="number">2</span><h3>Deploy the status page</h3><p>The `status` folder contains a nonsecret first project that proves GitHub to Vercel works.</p></div>
+      </div>
+      <div class="command">cd status
+vercel
+vercel deploy</div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="build-repo"><span><strong>Private practice repository created</strong>Use this public template to create a private Remm owned project.</span></label>
+        <label class="check"><input type="checkbox" data-check="build-status"><span><strong>Status page committed</strong>The page contains no names, calendars, tasks, transcripts, tokens, or private URLs.</span></label>
+        <label class="check"><input type="checkbox" data-check="build-vercel"><span><strong>Vercel deployment succeeds</strong>Open the public URL and confirm the page loads.</span></label>
+        <label class="check"><input type="checkbox" data-check="build-agentic"><span><strong>Agentic CLI test succeeds</strong>Ask Codex to change one sentence, commit it, push it, and deploy the update.</span></label>
+      </div>
+      <span class="page-number">12</span>
+    </section>
+
+    <section class="print-page" id="security">
+      <p class="eyebrow">Security and privacy</p>
+      <h2>Useful access, narrow boundaries</h2>
+      <p class="dek">The goal is not arbitrary control of the Mac. The goal is a small set of reliable actions with clear ownership and review.</p>
+      <div class="decision"><b>Telegram</b><span>One numeric owner ID. Direct messages only. Groups disabled initially.</span></div>
+      <div class="decision"><b>Files</b><span>Codex workspace access is scoped to `~/PersonalOS/runtime`.</span></div>
+      <div class="decision"><b>Commands</b><span>Host execution defaults to an allowlist and asks on a miss.</span></div>
+      <div class="decision"><b>PIN</b><span>Supported app installation requires a short lived authorization. The PIN hash lives in Doppler.</span></div>
+      <div class="decision"><b>Secrets</b><span>Tokens live in Doppler and enter the gateway process at runtime. Repositories contain placeholders only.</span></div>
+      <div class="decision"><b>Meetings</b><span>Full transcripts remain in the private vault indefinitely unless Remm deletes them.</span></div>
+      <div class="command">Doppler names: TELEGRAM_BOT_TOKEN, TELEGRAM_USER_ID, OPENCLAW_GATEWAY_TOKEN, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, PERSONAL_OS_PIN_HASH</div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="security-pin"><span><strong>PIN configured</strong>Run `personal-os set-pin` in the terminal. Enter the PIN privately.</span></label>
+        <label class="check"><input type="checkbox" data-check="security-audit"><span><strong>Secret audit clean</strong>Run the OpenClaw secrets audit and confirm no plaintext findings.</span></label>
+        <label class="check"><input type="checkbox" data-check="security-deny"><span><strong>Unknown sender denied</strong>Test with a second Telegram account only if one is safely available.</span></label>
+        <label class="check"><input type="checkbox" data-check="security-backup"><span><strong>Obsidian Sync verified</strong>Open a test note on Mac and iPhone before trusting the vault with important work.</span></label>
+      </div>
+      <p class="small">References: <a href="https://docs.openclaw.ai/tools/exec-approvals">OpenClaw exec approvals</a>, <a href="https://docs.openclaw.ai/gateway/secrets">OpenClaw secrets management</a>.</p>
+      <span class="page-number">13</span>
+    </section>
+
+    <section class="print-page" id="doctor">
+      <p class="eyebrow">Verification</p>
+      <h2>Run one setup doctor</h2>
+      <p class="dek">The doctor is the resume point. Run it after each phase. Fix the first required item, then run it again.</p>
+      <div class="command">personal-os doctor</div>
+      <div class="grid-2">
+        <div class="card card-mint"><h3>Required checks</h3><p>Node 24, all CLIs, apps, vault, required plugins, Codex sign in, GitHub sign in, Vercel sign in, Doppler, Google account, Granola session, and QMD.</p></div>
+        <div class="card card-blue"><h3>Optional checks</h3><p>Work calendar and read only Gmail can remain pending without blocking the successful personal setup.</p></div>
+      </div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox" data-check="doctor-required"><span><strong>All required checks pass</strong>No required line is marked FIX.</span></label>
+        <label class="check"><input type="checkbox" data-check="doctor-services"><span><strong>Background services started</strong>Run `personal-os services-start`, then verify with `personal-os services-status`.</span></label>
+        <label class="check"><input type="checkbox" data-check="doctor-task"><span><strong>Voice to task passes</strong>Dictate one due task and see it in today's note.</span></label>
+        <label class="check"><input type="checkbox" data-check="doctor-calendar"><span><strong>Voice to calendar passes</strong>Dictate one event and verify the selected calendar.</span></label>
+        <label class="check"><input type="checkbox" data-check="doctor-granola"><span><strong>Meeting review passes</strong>Import, propose, preview, approve, and verify selected tasks.</span></label>
+        <label class="check"><input type="checkbox" data-check="doctor-recall"><span><strong>Vault Recall passes</strong>Answer one decision question with transcript evidence.</span></label>
+        <label class="check"><input type="checkbox" data-check="doctor-deploy"><span><strong>GitHub to Vercel passes</strong>The nonsecret status page is live.</span></label>
+      </div>
+      <div class="callout callout-blue"><strong>Common fix:</strong> if QMD or OpenClaw reports a native module error, run `node -v`. It should show version 24, then reinstall QMD under that same runtime.</div>
+      <span class="page-number">14</span>
+    </section>
+
+    <section class="print-page" id="master-prompt">
+      <p class="eyebrow">Copy this into Remm's Codex</p>
+      <h2>The master onboarding prompt</h2>
+      <p class="dek">Attach this guide and open the repository in Codex, then paste the prompt below. Codex should install safe local pieces and pause for human account steps.</p>
+      <pre class="prompt" id="prompt-text">Goal: complete my OpenClaw Personal OS setup on this Mac using this repository and the attached guide.
+
+Success means:
+* Install the safe local tools and apps through setup.sh.
+* Keep the public system repository separate from my private runtime vault.
+* Guide me through paid ChatGPT with Codex, GitHub CLI, Vercel CLI, Doppler, Telegram BotFather, OpenClaw, Wispr Flow, Obsidian Sync, Granola, two Google calendars, and optional read only Gmail.
+* Configure Obsidian core plugins Bases, Daily Notes, Templates, and Sync.
+* Install and verify TaskNotes, Dataview, and Google Calendar. Keep Excalidraw optional and disabled initially.
+* Use my personal calendar as the required success path. Treat work calendar OAuth as optional when my company blocks it.
+* Configure my private Telegram bot for my numeric owner ID only.
+* Route routine task, reminder, and calendar actions immediately when details are clear. Ask one short question when the destination or timing is ambiguous.
+* Require the configured PIN before supported high risk system actions.
+* Import Granola meetings through the signed in desktop session, retain full transcripts, create Codex review packets, and create real tasks only after I approve selected action numbers.
+* Build today's focused daily note and verify it on my iPhone through Obsidian Sync.
+* Install and verify Vault Recall with QMD under Node 24.
+* Create a private practice repository owned by me and deploy the nonsecret status page through Vercel.
+* Run personal-os doctor after each phase and fix every required check.
+
+Stop when every required doctor check and the controlled task, calendar, Granola, recall, GitHub, and Vercel tests pass. Pause only when I must personally sign in, authorize an account, choose a paid plan, enter a PIN privately, or decide between materially different choices.
+
+Start by reading README.md, DECISIONS.md, setup.sh, and this guide. Inspect the current Mac state before installing. Preserve existing files. Explain each human step in one short instruction, wait for me to finish it, verify it, and continue.</pre>
+      <button class="screen-only" id="copy-prompt" type="button">Copy master prompt</button>
+      <div class="callout callout-mint"><strong>Done means verified.</strong> The doctor, controlled meeting, recall question, and status deployment prove the connections, not just the presence of installed apps.</div>
+      <span class="page-number">15</span>
+    </section>
+
+    <section class="print-page" id="sources">
+      <p class="eyebrow">Official references</p>
+      <h2>Sources and ownership</h2>
+      <p class="dek">Use these pages when a setup screen changes. Software moves quickly, so prefer the current official documentation over screenshots.</p>
+      <ul class="source-list">
+        <li><a href="https://docs.openclaw.ai/install/node">OpenClaw Node requirements</a></li>
+        <li><a href="https://docs.openclaw.ai/providers/openai">OpenClaw OpenAI and Codex auth</a></li>
+        <li><a href="https://docs.openclaw.ai/channels/telegram">OpenClaw Telegram channel</a></li>
+        <li><a href="https://docs.openclaw.ai/tools/exec-approvals">OpenClaw exec approvals</a></li>
+        <li><a href="https://docs.openclaw.ai/gateway/secrets">OpenClaw secrets management</a></li>
+        <li><a href="https://docs.wisprflow.ai/articles/3152211871-setup-guide">Wispr Flow setup</a></li>
+        <li><a href="https://docs.granola.ai/help-center/taking-notes/transcription">Granola transcription</a></li>
+        <li><a href="https://docs.granola.ai/help-center/sharing/exporting-notes">Granola export</a></li>
+        <li><a href="https://obsidian.md/help/sync/setup">Obsidian Sync</a></li>
+        <li><a href="https://tasknotes.dev/">TaskNotes</a></li>
+        <li><a href="https://github.com/tobi/qmd">QMD</a></li>
+        <li><a href="https://cli.github.com/">GitHub CLI</a></li>
+        <li><a href="https://vercel.com/docs/cli">Vercel CLI</a></li>
+      </ul>
+      <div class="grid-2">
+        <div class="card card-blue"><h3>Remm owns</h3><p>Accounts, tokens, vault, transcripts, repositories, deployments, calendar data, and all private project copies.</p></div>
+        <div class="card card-mint"><h3>The public template owns</h3><p>Only reusable setup code, empty vault structure, guide assets, tests, and nonsecret status page.</p></div>
+      </div>
+      <p class="footer-note">MIT licensed · CraftYourDesires/openclaw-personal-os</p>
+      <span class="page-number">16</span>
+    </section>
+  </main>
+
+  <script>
+    const storageKey = "remm-personal-os-checklist";
+    const checks = Array.from(document.querySelectorAll("[data-check]"));
+    const progress = document.getElementById("progress");
+
+    function readState() {
+      try {
+        return JSON.parse(localStorage.getItem(storageKey) || "{}");
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function updateProgress() {
+      const complete = checks.filter((item) => item.checked).length;
+      progress.textContent = `${complete} of ${checks.length} complete`;
+    }
+
+    const saved = readState();
+    for (const item of checks) {
+      item.checked = Boolean(saved[item.dataset.check]);
+      item.addEventListener("change", () => {
+        const state = readState();
+        state[item.dataset.check] = item.checked;
+        localStorage.setItem(storageKey, JSON.stringify(state));
+        updateProgress();
+      });
+    }
+    updateProgress();
+
+    document.getElementById("print-guide").addEventListener("click", () => window.print());
+    document.getElementById("reset-guide").addEventListener("click", () => {
+      localStorage.removeItem(storageKey);
+      for (const item of checks) item.checked = false;
+      updateProgress();
+    });
+    document.getElementById("copy-prompt").addEventListener("click", async (event) => {
+      await navigator.clipboard.writeText(document.getElementById("prompt-text").textContent);
+      event.currentTarget.textContent = "Copied";
+    });
+  </script>
+</body>
+</html>

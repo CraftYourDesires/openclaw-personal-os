@@ -1,0 +1,1 @@
+Jordan set the launch for August 14 and owns the launch checklist, due August 11. [Acme launch planning](</Users/kapusta/openclaw-personal-os/skills/vault-recall/evals/fixtures/acme-launch-meeting.md>)

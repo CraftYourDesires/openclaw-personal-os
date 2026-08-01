@@ -1,0 +1,25 @@
+{
+  "tasksFolder": "TaskNotes/Tasks",
+  "moveArchivedTasks": false,
+  "archiveFolder": "TaskNotes/Archive",
+  "taskTag": "task",
+  "taskIdentificationMethod": "tag",
+  "defaultTaskPriority": "normal",
+  "defaultTaskStatus": "open",
+  "taskFilenameFormat": "zettel",
+  "storeTitleInFilename": true,
+  "customFilenameTemplate": "{title}",
+  "enableNaturalLanguageInput": true,
+  "nlpDefaultToScheduled": true,
+  "enableNotifications": true,
+  "notificationType": "system",
+  "enableAPI": false,
+  "enableBases": true,
+  "autoCreateDefaultBasesFiles": true,
+  "showTaskCardInNote": true,
+  "showRelationships": true,
+  "commandFileMapping": {
+    "open-tasks-view": "TaskNotes/Views/tasks-default.base",
+    "open-agenda-view": "TaskNotes/Views/agenda-default.base"
+  }
+}

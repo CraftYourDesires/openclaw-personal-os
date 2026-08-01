@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A nonsecret deployment check for OpenClaw Personal OS.">
+  <title>Personal OS Ready</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 24px; background: #edf3f7; color: #12263a; font-family: Avenir, Helvetica, Arial, sans-serif; }
+    main { width: min(680px, 100%); padding: 54px; border: 1px solid #d7e1e8; border-radius: 28px; background: #f8fafc; box-shadow: 0 24px 70px rgba(18, 38, 58, 0.12); }
+    .signal { width: 14px; height: 14px; border-radius: 50%; background: #49a979; box-shadow: 0 0 0 8px rgba(73, 169, 121, 0.14); }
+    p:first-of-type { color: #176ea8; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    h1 { margin: 18px 0; font: 700 clamp(42px, 8vw, 72px)/1.02 Georgia, serif; letter-spacing: -0.035em; }
+    p { max-width: 520px; line-height: 1.65; }
+    code { padding: 3px 7px; border-radius: 6px; background: #eaf5fc; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="signal" aria-hidden="true"></div>
+    <p>Deployment check</p>
+    <h1>Personal OS Ready</h1>
+    <p>GitHub and Vercel are connected. This page contains no private tasks, meetings, calendar details, tokens, or personal data.</p>
+    <p>Next test: ask Codex to edit this sentence, commit the change with <code>gh</code>, and publish it with <code>vercel</code>.</p>
+  </main>
+</body>
+</html>
