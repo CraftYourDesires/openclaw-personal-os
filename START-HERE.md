@@ -4,12 +4,16 @@ This repository is the complete starter package. Codex should read this file fir
 
 ## What Kaz sends Remm
 
-1. Repository: `https://github.com/CraftYourDesires/openclaw-personal-os`
-2. Interactive guide: `guide/index.html`
-3. Full setup PDF: `guide/remm-openclaw-personal-os.pdf`
-4. Short call PDF: `output/pdf/remm-personal-os-call-overview.pdf`
+1. [Complete OpenClaw Personal OS repository](https://github.com/CraftYourDesires/openclaw-personal-os)
+2. [Open the interactive setup guide](https://craftyourdesires.github.io/openclaw-personal-os/)
+3. [Open or download the full setup PDF](guide/remm-openclaw-personal-os.pdf)
+4. [Open or download the short call PDF](output/pdf/remm-personal-os-call-overview.pdf)
 
 The repository already contains the HTML, both PDFs, installer, folder templates, Obsidian configuration, Vault Recall skill, setup doctor, and first Vercel practice project. Sending the repository link gives Codex the entire package.
+
+For the simplest email, send Remm the repository link and the interactive guide link above. The PDFs are optional attachments. Do not attach `guide/index.html` by itself because it uses supporting files stored beside it in the repository.
+
+Remm can read the hosted guide immediately in any browser. During setup, Codex clones the complete repository and opens the local interactive copy at `~/Openclaw/system/guide/index.html`. The local copy keeps his checklist progress in his browser on his Mac.
 
 ## The one Home folder
 

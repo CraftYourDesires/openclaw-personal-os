@@ -119,3 +119,14 @@ Evidence:
 
 * https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
 * https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html
+
+## 2026-08-01: Publish the interactive guide from its existing source folder
+
+Decision: Publish the tracked `guide` folder through GitHub Pages and link the hosted guide from `START-HERE.md`. Keep the local HTML copy as the setup version that saves Remm's checklist progress on his Mac.
+
+Reason: A hosted link is easy to email and preview before installation. Publishing the existing folder avoids a duplicate website or a second content stream. GitHub's official Pages workflow supports uploading a static folder as an artifact and deploying it from the default branch.
+
+Evidence:
+
+* https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
+* https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
